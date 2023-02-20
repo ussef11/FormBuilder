@@ -77,18 +77,20 @@ h3{
     padding: 2px;
     /* margin: 13px; */
     margin-left: 6px;
+    margin-bottom: 9px;
 }
 
 .elemnt{
     height: 20px;
-     width: 100%;
-     margin-left: -97px;
-     justify-content: end;
-     /* display: flex; */
-     text-align: end;
-     margin-right: 24px;
-     position: relative;
-     top: 29px;
+    width: 100%; 
+    margin-left: -97px;
+    justify-content: end;
+    /* display: flex; */
+    text-align: initial;
+    margin-right: 24px;
+    position: relative;
+    top: 30px;
+   
 }
 
 .elemnt input{
@@ -96,6 +98,11 @@ h3{
     height: 26px;
     border: 3px solid #989898;
     border-radius: 4px;
+}
+
+.elemnt  h1{
+    position: relative;
+    top: -23px;
 }
 
 .titleofelem h3{
@@ -112,3 +119,16 @@ h3{
     margin-left: 7px;
     margin-top: 2px;
 }
+
+.material-symbols-outlined{
+    cursor: pointer;
+}
+
+/* .optionbar{
+    display: flex;
+} */
+/* 
+.elements:hover + .optionbar {
+    display: flex;
+} 
+ */

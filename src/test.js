@@ -3,35 +3,36 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "react-uuid";
 import "./Home/home.css";
 const Test = () => {
+  const [labelheader, setlabelheader] = useState("Header");
+
   const itemsfrombackend = [
     {
       id: "1",
       title: "input",
       thumbs: "input.png",
-      tag : "input",
-      label : ""
-      
+      tag: "input",
+      label: "",
     },
     {
       id: "2",
       title: "button",
       thumbs: "button.png",
-      tag : "button",
-      label : "button"
+      tag: "button",
+      label: "button",
     },
     {
       id: "3",
       title: "File Upload",
       thumbs: "file.png",
-      tag : "input type='file' ",
-      label : ""
+      tag: "input type='file' ",
+      label: "",
     },
     {
       id: "4",
       title: "Header",
       thumbs: "header.png",
-      tag : "h1",
-      label : "Header"
+      tag: "h1",
+      label: labelheader,
     },
   ];
 
@@ -56,7 +57,9 @@ const Test = () => {
       let sourceItems = [...sourceColumn.items];
       const destItems = [...destColumn.items];
       const [removed] = sourceItems.splice(source.index, 1);
+
       //  const [removed] = sourceItems.find((ele) => ele.id == source.index )
+
       console.log("sourceItems", sourceItems);
       const copied = [removed];
       copied[0].id = index.toString();
@@ -64,34 +67,35 @@ const Test = () => {
       //  for(let i =0 ;i<=sourceItems.length;i++){
       //   sourceItems.splice(i-1,1 );
       //  }
+
       let input = {
         id: "1",
         title: "input",
         thumbs: "input.png",
-        tag : "input",
-        label : ""
+        tag: "input",
+        label: "",
       };
       let button = {
         id: "2",
         title: "button",
         thumbs: "button.png",
-        tag : "button",
-        label : "button"
+        tag: "button",
+        label: "button",
       };
       let File = {
         id: "3",
         title: "File Upload",
         thumbs: "file.png",
-        tag : "input type='file' "
-        ,label : ""
+        tag: "input type='file' ",
+        label: "",
       };
 
       let Header = {
         id: "4",
         title: "Header",
         thumbs: "header.png",
-        tag : "h1",
-        label : "Header"
+        tag: "h1",
+        label: labelheader,
       };
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
@@ -138,7 +142,30 @@ const Test = () => {
       });
     }
   };
+  const [idhover, setidhover] = useState();
+
+  const handleOnEdit = (id) => {
+    let newlabel = prompt("Please Update this");
+
+    //  const { source, destination } = result;
+    //  const destColumn = columns[destination.droppableId];
+    //  const destItems = [...destColumn.items];
+    console.log("columns", columns);
+    console.log("id", id);
+
+    for (let i = 0; i < columns[1].items.length; i++) {
+      if (
+        id == columns[1]["items"][i].id &&
+        !columns[1]["items"][i].tag.includes("input")
+      ) {
+        columns[1]["items"][i].label = newlabel;
+        console.log("fromhandleOnedit", columns[1]["items"][i].label);
+      }
+    }
+  };
   const [index, setindex] = useState(uuid());
+
+  const [hover , sethover] = useState(false)
   return (
     <>
       <h1>Hello</h1>
@@ -152,14 +179,17 @@ const Test = () => {
         >
           {Object.entries(columns).map(([id, data]) => (
             <Droppable droppableId={id}>
+
               {(provided, snapshot) => (
+           
                 <div
                   className={`formsDrop-${id}`}
                   ref={provided.innerRef}
-                  style={{
+                  const style={{
                     backgroundColor: snapshot.isDraggingOver
                       ? "blue"
                       : "transparent",
+                    
                   }}
                   {...provided.droppableProps}
                 >
@@ -176,10 +206,60 @@ const Test = () => {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                             className={id == 1 ? "elements" : "myli"}
+                             onMouseEnter={()=>{id == 1 ? sethover(true) : sethover(false)  }}
+                             onMouseLeave={()=>{sethover(false)}}
                           >
-                           { id == 1 ?   <div className="titleofelem"> <h3> {item.title} </h3></div>  : <span></span>}
-                           { id == 1 ?  <div className="elemnt"  dangerouslySetInnerHTML={{__html : `<${item.tag}>   ${item.label}   </${item.tag}>`}} /> : <span className="buttons">{item.title} </span>}
-                            
+                           
+                            {id == 1 ? (
+                              <div className="titleofelem">
+                                {" "}
+                                <h3> {item.title} </h3>
+                              </div>
+                            ) : (
+                              <span></span>
+                            )}
+                            {id == 1 ? (
+                             
+                              <div
+                                className="elemnt"
+                                dangerouslySetInnerHTML={{
+                                  __html: `<${item.tag}>   ${item.label}   </${item.tag}>`,
+                                }}
+                              />
+                          
+                        
+                            ) : (
+                              <span className="buttons">{item.title} </span>
+                            )}
+                     {hover &&    <div  className="optionbar">
+                              <div>  {id == 1 ? (
+                                  <span
+                                    className="material-symbols-outlined"
+                                    onClick={() => {
+                                      handleOnEdit(item.id);
+                                    }}
+
+                                    onMouseEnter={()=>{id == 1 ? setidhover(item.id) : setidhover("")  }}
+                                    onMouseLeave={()=>{setidhover("")}}
+                                  >
+                                    edit
+                                  </span>
+                                ) :(
+                                  <span></span>
+                                )}
+                              </div>
+                              <div>  {id == 1 ? (
+                               <span className="material-symbols-outlined">
+                               delete
+                               </span>
+                                ) : (
+                                  <span></span>
+                                )}
+                              </div>
+
+
+                            </div>}
+                           
                           </div>
                         )}
                       </Draggable>
