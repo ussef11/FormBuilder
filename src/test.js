@@ -165,10 +165,11 @@ const Test = () => {
   };
   const [index, setindex] = useState(uuid());
 
-  const [hover , sethover] = useState(false)
+  const [hover , sethover] = useState(-1)
+
   return (
     <>
-      <h1>Hello</h1>
+      <h1>formBuilder</h1>
 
       <div className="Content">
         <DragDropContext
@@ -206,8 +207,8 @@ const Test = () => {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                             className={id == 1 ? "elements" : "myli"}
-                             onMouseEnter={()=>{id == 1 ? sethover(true) : sethover(false)  }}
-                             onMouseLeave={()=>{sethover(false)}}
+                             onMouseEnter={()=>{id == 1  ? sethover(index) : sethover(-1)  }}
+                             onMouseLeave={()=>{sethover(-1)}}
                           >
                            
                             {id == 1 ? (
@@ -231,7 +232,7 @@ const Test = () => {
                             ) : (
                               <span className="buttons">{item.title} </span>
                             )}
-                     {hover &&    <div  className="optionbar">
+                     {hover === index ?    <div  className="optionbar">
                               <div>  {id == 1 ? (
                                   <span
                                     className="material-symbols-outlined"
@@ -239,8 +240,6 @@ const Test = () => {
                                       handleOnEdit(item.id);
                                     }}
 
-                                    onMouseEnter={()=>{id == 1 ? setidhover(item.id) : setidhover("")  }}
-                                    onMouseLeave={()=>{setidhover("")}}
                                   >
                                     edit
                                   </span>
@@ -258,7 +257,7 @@ const Test = () => {
                               </div>
 
 
-                            </div>}
+                            </div> : <span></span>}
                            
                           </div>
                         )}

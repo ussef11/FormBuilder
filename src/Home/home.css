@@ -132,3 +132,16 @@ h3{
     display: flex;
 } 
  */
+
+
+ button{
+    width: 101px;
+    font-size: 1em;
+    padding: 8px;
+    /* background-color: #926a6a; */
+    /* color: #fff; */
+    border-radius: 4px;
+    /* border: none; */
+    cursor: pointer;
+  
+ }
