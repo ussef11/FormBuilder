@@ -147,6 +147,23 @@ const Test = () => {
   const handledisplay = (index) =>{
     setshowOptionbar(index)
   }
+
+
+  const handleDelete = (id , index)=>{
+    console.log("id", id);
+
+    for (let i = 0; i < columns[1].items.length; i++) {
+      if (id == columns[1]["items"][i].id) {
+        console.log(index)
+        if(index>-1){
+          columns[1]["items"].splice(index,1)
+        }
+        
+      }
+    }
+  }
+
+
   const handleOnEdit = (id ,index) => {
     let newlabel = labelValue;
    
@@ -168,6 +185,7 @@ const Test = () => {
     }
     setlabelValue("")
   };
+
 
   const onMouseEnter = (index)=>{
     sethover(index)
@@ -255,7 +273,7 @@ const Test = () => {
                                 )}
                               </div>
                               <div>  {id == 1 ? (
-                               <span  className="material-symbols-outlined">
+                               <span onClick={()=>{handleDelete(item.id , index)}} className="material-symbols-outlined">
                                delete
                                </span>
                                 ) : (
@@ -269,9 +287,12 @@ const Test = () => {
                             
                             {  showOptionbar == index ?  <div  className="editContent">
                                   <div className="editInput"> 
-                                  <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1)}} class="material-symbols-outlined">close</span></div>
+                               
+                                 <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1)}} class="material-symbols-outlined">close</span></div>
+                                 <div className="toGrid">
                                   <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
                                   <div  className="inputdiv">   <input value={labelValue} onChange={(e)=>{setlabelValue(e.target.value)}}  type="text" /></div> 
+                                  </div>
                                   <div className="buttondiv"> <button style={{height:"25px"}} onClick={() => {
                                       handleOnEdit(item.id , index);
                                     }}> Update  </button>  </div>
