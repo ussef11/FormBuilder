@@ -143,9 +143,13 @@ const Test = () => {
     }
   };
   const [idhover, setidhover] = useState();
-
-  const handleOnEdit = (id) => {
-    let newlabel = prompt("Please Update this");
+ 
+  const handledisplay = (index) =>{
+    setshowOptionbar(index)
+  }
+  const handleOnEdit = (id ,index) => {
+    let newlabel = labelValue;
+   
 
     //  const { source, destination } = result;
     //  const destColumn = columns[destination.droppableId];
@@ -162,10 +166,17 @@ const Test = () => {
         console.log("fromhandleOnedit", columns[1]["items"][i].label);
       }
     }
+    setlabelValue("")
   };
+
+  const onMouseEnter = (index)=>{
+    sethover(index)
+  }
   const [index, setindex] = useState(uuid());
 
   const [hover , sethover] = useState(-1)
+  const [showOptionbar , setshowOptionbar] = useState(-1)
+  const [labelValue , setlabelValue] = useState()
 
   return (
     <>
@@ -207,10 +218,11 @@ const Test = () => {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                             className={id == 1 ? "elements" : "myli"}
-                             onMouseEnter={()=>{id == 1  ? sethover(index) : sethover(-1)  }}
+                             onMouseEnter={()=>{id == 1  ? onMouseEnter(index) : sethover(-1)  }}
                              onMouseLeave={()=>{sethover(-1)}}
                           >
-                           
+                              
+                         
                             {id == 1 ? (
                               <div className="titleofelem">
                                 {" "}
@@ -220,24 +232,19 @@ const Test = () => {
                               <span></span>
                             )}
                             {id == 1 ? (
-                             
+                             <> 
                               <div
                                 className="elemnt"
                                 dangerouslySetInnerHTML={{
                                   __html: `<${item.tag}>   ${item.label}   </${item.tag}>`,
                                 }}
                               />
-                          
-                        
-                            ) : (
-                              <span className="buttons">{item.title} </span>
-                            )}
-                     {hover === index ?    <div  className="optionbar">
+                                   {hover === index ?    <div  className="optionbar">
                               <div>  {id == 1 ? (
                                   <span
                                     className="material-symbols-outlined"
                                     onClick={() => {
-                                      handleOnEdit(item.id);
+                                      handledisplay(index);
                                     }}
 
                                   >
@@ -248,7 +255,7 @@ const Test = () => {
                                 )}
                               </div>
                               <div>  {id == 1 ? (
-                               <span className="material-symbols-outlined">
+                               <span  className="material-symbols-outlined">
                                delete
                                </span>
                                 ) : (
@@ -258,7 +265,32 @@ const Test = () => {
 
 
                             </div> : <span></span>}
-                           
+
+                            
+                            {  showOptionbar == index ?  <div  className="editContent">
+                                  <div className="editInput"> 
+                                  <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1)}} class="material-symbols-outlined">close</span></div>
+                                  <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
+                                  <div  className="inputdiv">   <input value={labelValue} onChange={(e)=>{setlabelValue(e.target.value)}}  type="text" /></div> 
+                                  <div className="buttondiv"> <button style={{height:"25px"}} onClick={() => {
+                                      handleOnEdit(item.id , index);
+                                    }}> Update  </button>  </div>
+                                  </div>
+
+                                </div> :  <span></span>  }
+
+                          
+
+
+
+
+                                </>
+                            ) : (
+                              <span className="buttons">{item.title} </span>
+                            )}
+                            
+                   
+                          
                           </div>
                         )}
                       </Draggable>

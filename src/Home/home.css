@@ -67,12 +67,11 @@ h3{
 
 .elements{
     border-radius: 5px;
-    display: flex;
-    justify-content: center;
+    display: block;
+        justify-content: center;
     border: 1px solid sandybrown;
     margin-top: 5px;
     background-color: white;
-    height: 71px;
     width: 127%;
     padding: 2px;
     /* margin: 13px; */
@@ -82,14 +81,16 @@ h3{
 
 .elemnt{
     height: 20px;
-    width: 100%; 
-    margin-left: -97px;
+    width: 94%;
+    margin-left: 13px;
     justify-content: end;
     /* display: flex; */
     text-align: initial;
-    margin-right: 24px;
+    /* margin-right: -16px; */
     position: relative;
-    top: 30px;
+    top: -15px;
+    margin-top: 27px;
+    margin-bottom: 5px;
    
 }
 
@@ -102,7 +103,7 @@ h3{
 
 .elemnt  h1{
     position: relative;
-    top: -23px;
+    top: -8px;
 }
 
 .titleofelem h3{
@@ -124,18 +125,20 @@ h3{
     cursor: pointer;
 }
 
-/* .optionbar{
-    display: flex;
-} */
-/* 
-.elements:hover + .optionbar {
-    display: flex;
+ .optionbar{
+    width: 0;
+    margin-left: auto;
+    margin-right: 26px;
+    position: relative;
+    bottom: 70px;
+    height: 0;
 } 
- */
 
 
- button{
-    width: 101px;
+
+
+ .elemnt button{
+   
     font-size: 1em;
     padding: 8px;
     /* background-color: #926a6a; */
@@ -145,3 +148,17 @@ h3{
     cursor: pointer;
   
  }
+
+ .allContent{
+    width: 100%;
+ }
+
+ .editContent{
+
+    padding: 10px 5px;
+    background: #f7f7f7;
+    border-radius: 3px;
+    margin: 0;
+    border: 1px solid #c5c5c5;
+    transition: background-color .5s ease-in-out;
+}
