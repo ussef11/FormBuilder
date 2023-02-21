@@ -162,3 +162,9 @@ h3{
     border: 1px solid #c5c5c5;
     transition: background-color .5s ease-in-out;
 }
+
+.closeOptionbar{
+    width: 0;
+    margin-left: 97%;
+    margin-right: 0;
+}
