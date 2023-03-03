@@ -116,7 +116,7 @@ const Home = () => {
       console.log("sourceItems", sourceItems[0].id);
       console.log("removed", removed);
       console.log("destItems", destItems);
-
+      setalledite(destItems)
       setcolumns({
         ...columns,
         [source.droppableId]: {
@@ -144,8 +144,10 @@ const Home = () => {
   };
   const [idhover, setidhover] = useState();
  
-  const handledisplay = (index) =>{
+  const handledisplay = (index , id) =>{
     setshowOptionbar(index)
+ 
+    
   }
 
 
@@ -162,9 +164,19 @@ const Home = () => {
       }
     }
   }
+const [alledite , setalledite] = useState([])
+  const handleupdate = (e,id , index)=>{
 
+   alledite.map((x)=>{
+    if(x.id === id){
+      x.label = e.target.value
+    }
+   })
+    setlabelValue(e.target.value)
 
-  const handleOnEdit = (id ,index) => {
+  }
+
+   const  handleOnEdit =  (id ,index) => {
     let newlabel = labelValue;
    
 
@@ -179,11 +191,27 @@ const Home = () => {
         id == columns[1]["items"][i].id &&
         !columns[1]["items"][i].tag.includes("input")
       ) {
-        columns[1]["items"][i].label = newlabel;
+         columns[1]["items"][i].label =  newlabel;
         console.log("fromhandleOnedit", columns[1]["items"][i].label);
+        // let result = [...alledite]
+        // let data = {"index" : index , "id" : columns[1]["items"][i].id , 'label':columns[1]["items"][i].label}
+        
+      //  for(let i =0 ; i< alledite.length; i++){
+      //   if(alledite.includes(alledite[i]['id'])){
+      //     alledite.splice(alledite[i]["index"],1)
+      //   }
+      //  }
+      //   console.log("index" , index)
+      //   alledite.splice(index,1)
+      //   alledite.splice(index,0,data)
+      //   // result.push(data)
+      //   setalledite(result)
+
       }
     }
     setlabelValue("")
+    setshowOptionbar(-1 )
+   console.log("alledited" ,alledite)
   };
 
 
@@ -236,8 +264,8 @@ const Home = () => {
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                             className={id == 1 ? "elements" : "myli"}
-                             onMouseEnter={()=>{id == 1  ? onMouseEnter(index) : sethover(-1)  }}
-                             onMouseLeave={()=>{sethover(-1)}}
+                            onMouseEnter={()=>{id == 1  ? onMouseEnter(index) : sethover(-1)  }}
+                            onMouseLeave={()=>{sethover(-1)}}
                           >
                               
                          
@@ -288,10 +316,14 @@ const Home = () => {
                             {  showOptionbar == index ?  <div  className="editContent">
                                   <div className="editInput"> 
                                
-                                 <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1)}} class="material-symbols-outlined">close</span></div>
+                                 {/* <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1 ,item.id )}} className="material-symbols-outlined">close</span></div> */}
                                  <div className="toGrid">
                                   <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
-                                  <div  className="inputdiv">   <input value={labelValue} onChange={(e)=>{setlabelValue(e.target.value)}}  type="text" /></div> 
+                                  <div  className="inputdiv"> {    alledite.map((x)=>( 
+                                    item.id === x.id ? 
+                                    <input value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text" />
+                                    : <span></span>
+                                  )) }</div> 
                                   </div>
                                   <div className="buttondiv"> <button style={{height:"25px"}} onClick={() => {
                                       handleOnEdit(item.id , index);
@@ -299,12 +331,6 @@ const Home = () => {
                                   </div>
 
                                 </div> :  <span></span>  }
-
-                          
-
-
-
-
                                 </>
                             ) : (
                               <span className="buttons">{item.title} </span>
