@@ -1,5 +1,5 @@
 import { use } from "i18next";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "react-uuid";
 import "./Home/home.css";
@@ -172,19 +172,34 @@ const Test = () => {
   }
   
   const [nbroption , setnbroption] = useState(1)
-  const [options , setoptions] = useState([ {"emplacementid" : 0 ,"index" : 0 ,"id" :0 , "label" : `label`}])
+  const [options , setoptions] = useState([])
  const [indexblockOption , setindexblockOption] = useState(0)
  const [blockOption , setblockOption] = useState([{"index" : 0 ,"id" :0 , "label" : `label`}])
 
 const addoption = (id)=>
 {
+
+  
+
   setnbroption(nbroption+1)
   let myoptions = {"emplacementid" : id,"index" : nbroption ,"id" :nbroption , "label" : `label${nbroption}`}
-  // let listofoption = []
-  // listofoption.push(myoptions)
-  // console.log(listofoption)
+
   setoptions(current => [...current , myoptions])
   console.log("options  :" ,options)
+
+}
+
+const HandledeleteOption = (id , index)=>{
+
+    options.map((x)=>{
+      if(id == x.id){
+        setoptions( optionss => optionss.filter(i => i.id != id)) 
+//  optionss get value of setoptions (options)
+      }
+    })
+
+    console.log("options  :" ,options)
+  
 
 }
 
@@ -201,7 +216,7 @@ const addoption = (id)=>
         
       }
     }
-    setoptions([ {"index" : 0 ,"id" :0 , "label" : `label`}])
+    setoptions([ ])
     setblockOption([])
     setnbroption(1)
   }
@@ -212,9 +227,9 @@ const [alledite , setalledite] = useState([])
   const handleupdate = (e,id , index,optid)=>{
 
    alledite.map((x)=>{
-    if(x.id === id && x.title != "Checkbox"){
+    if(x.id === id && x.tag != "input type='radio' "){
       x.label = e.target.value
-    }else if(x.id === id && x.title =="Checkbox"){
+    }else if(x.id === id && x.tag =="input type='radio' "){
       options.map((opt)=>{
         if(opt.id === optid){
           opt.label = e.target.value
@@ -223,12 +238,7 @@ const [alledite , setalledite] = useState([])
     }
    })
     setlabelValue(e.target.value)
-    //  blockOption.map((pt)=>{
-      //   pt.options.map((ptma)=>{
-      //     console.log("ptma :  ", ptma)
 
-      //   })
-      //  })
     
   }
   const handleupdatetitle = (e,id , index)=>{
@@ -272,13 +282,15 @@ const [alledite , setalledite] = useState([])
       //   alledite.splice(index,0,data)
       //   // result.push(data)
       //   setalledite(result)
-
+        //  options.push({"emplacementid" : 0,"index" : 0 ,"id" :0 , "label" : `label`})
+        
       }
     }
     setlabelValue("")
     setshowOptionbar(-1 )
    console.log("alledited" ,alledite)
-
+  //  options.push({"emplacementid" : 0,"index" : 0 ,"id" :0 , "label" : `label`})
+  //  console.log(options)
 
   //  setindexblockOption(indexblockOption+1)
   //  blockOption.splice(indexblockOption , 0 , {"idop" :id ,options})
@@ -334,7 +346,7 @@ const [alledite , setalledite] = useState([])
                   ref={provided.innerRef}
                   const style={{
                     backgroundColor: snapshot.isDraggingOver
-                      ? "blue"
+                      ? "hsla(0,0%,100%,.25)"
                       : "transparent",
                     
                   }}
@@ -381,17 +393,12 @@ const [alledite , setalledite] = useState([])
                               /> : 
                               
                              <> {
-      //  blockOption.map((pt)=>{
-      //   pt.options.map((ptma)=>{
-      //     console.log("ptma :  ", ptma)
 
-      //   })
-      //  })
     
 
 
 options.map((opt)=>(
-  opt.emplacementid == item.id ?
+  opt.emplacementid == item.id  ?
     <div
     className="elemnt"
     dangerouslySetInnerHTML={{
@@ -479,11 +486,11 @@ options.map((opt)=>(
                         { 
                       
                           options.map((opt)=>(
-                            opt.emplacementid == item.id ?
+                            opt.emplacementid == item.id  ?
                           <div className="toGrid">
                                   <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
-                                  <div  className="labeldiv"> <label htmlFor="label">{opt.id}</label> </div> 
-                                  <div  className="inputdiv"> {  
+                                  <div  className="labeldiv"> <span className="material-symbols-outlined"  onClick={()=>{HandledeleteOption(opt.id , opt.index)}} htmlFor="label">close</span> </div> 
+                                  <div  className="inputdiv"> {   
                                          
                                 alledite.map((x)=>( 
                                     item.id === x.id ? <input value={opt.label} onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
@@ -493,15 +500,16 @@ options.map((opt)=>(
                                   }
                                    </div> 
                                    
-                                {item.tag.includes("input") && item.tag != "input type='radio' "  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
+                                {item.tag.includes("input") && item.tag != "input type='radio' "  ? null  :  <div style={{width:0}}  className="labeldiv">  {    opt.index == 1 ? <label htmlFor="label">Title</label> : null }</div> }
 
                                 {item.tag.includes("input") && item.tag != "input type='radio' "  ?  null :  <div  className="inputdiv">  { 
 
                                                  
                                      alledite.map((x)=>( 
+                                       opt.index == 1 ?
                                              item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
                                              : null
-                                           ))     
+                                        :null   ))     
 
                                            }
                                  
@@ -513,7 +521,7 @@ options.map((opt)=>(
                    : null     ))
                                 }
 
-                                  <div> <button onClick={()=>{addoption(item.id)}}>Add Option</button></div>
+                                  <div> <button className="addoption" onClick={()=>{addoption(item.id)}}>Add Option <span className="plus">+</span> </button></div>
 
                                   </>
                                   

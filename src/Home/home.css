@@ -95,7 +95,7 @@ h3{
 }
 
 .elemnt input{
-    width: 99%;
+    width: 95%;
     height: 26px;
     border: 3px solid #989898;
     border-radius: 4px;
@@ -129,11 +129,14 @@ h3{
 }
 
  .optionbar{
+ 
     width: 0;
     margin-left: auto;
-    margin-right: 26px;
+    margin-right: 49px;
     position: relative;
-    bottom: 70px;
+    position: relative;
+    display: flex;
+    top: -36px;
     height: 0;
 } 
 
@@ -200,8 +203,31 @@ h3{
     text-overflow: ellipsis;
     text-transform: capitalize;
 }
+.material-symbols-outlined{
+    color: red;
+    border-radius: 6px;
+}
+.material-symbols-outlined:hover{
+    background-color: red;
+    color: rgb(255, 255, 255);
+}
 
+.plus{
+    font-size: 16px;
+}
+
+.addoption{
+    border: 1px solid #c5c5c5;
+    height: 30px;
+    width: 113px;
+    background-color: white;
+    border: 0.2px sol;
+    border-radius: 5px;
+    font-family: monospace;
+    font-weight: 800;
+}
 .toGrid{
+    margin: 20px;
     display: flex;
     text-align: center;
     justify-content: center;
