@@ -1,3 +1,4 @@
+import { use } from "i18next";
 import React, { useCallback, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "react-uuid";
@@ -11,7 +12,7 @@ const Test = () => {
       title: "input",
       thumbs: "input.png",
       tag: "input",
-      label: "",
+      label: "input",
     },
     {
       id: "2",
@@ -33,6 +34,14 @@ const Test = () => {
       thumbs: "header.png",
       tag: "h1",
       label: labelheader,
+    },
+    {
+      id: "5",
+      title: "Checkbox",
+      thumbs: "header.png",
+      tag: "input type='radio' ",
+      label: "",
+      class:"labelL"
     },
   ];
 
@@ -73,7 +82,7 @@ const Test = () => {
         title: "input",
         thumbs: "input.png",
         tag: "input",
-        label: "",
+        label: "input",
       };
       let button = {
         id: "2",
@@ -97,6 +106,14 @@ const Test = () => {
         tag: "h1",
         label: labelheader,
       };
+     let checkbox = {
+        id: "5",
+        title: "Checkbox",
+        thumbs: "header.png",
+        tag: "input type='radio' ",
+        label: "",
+        class:"labelL"
+      }
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
         sourceItems.splice(source.index, 0, input);
@@ -110,12 +127,16 @@ const Test = () => {
       if (copied[0].id == copied[0].id && copied[0].title == "Header") {
         sourceItems.splice(source.index, 0, Header);
       }
+      if (copied[0].id == copied[0].id && copied[0].title == "Checkbox") {
+        sourceItems.splice(source.index, 0, checkbox);
+      }
       destItems.splice(destination.index, 0, copied[0]);
       let newitem = sourceItems;
       console.log("copied[0].id ", copied[0].id);
       console.log("sourceItems", sourceItems[0].id);
       console.log("removed", removed);
       console.log("destItems", destItems);
+
       setalledite(destItems)
       setcolumns({
         ...columns,
@@ -149,9 +170,26 @@ const Test = () => {
  
     
   }
+  
+  const [nbroption , setnbroption] = useState(1)
+  const [options , setoptions] = useState([ {"emplacementid" : 0 ,"index" : 0 ,"id" :0 , "label" : `label`}])
+ const [indexblockOption , setindexblockOption] = useState(0)
+ const [blockOption , setblockOption] = useState([{"index" : 0 ,"id" :0 , "label" : `label`}])
 
+const addoption = (id)=>
+{
+  setnbroption(nbroption+1)
+  let myoptions = {"emplacementid" : id,"index" : nbroption ,"id" :nbroption , "label" : `label${nbroption}`}
+  // let listofoption = []
+  // listofoption.push(myoptions)
+  // console.log(listofoption)
+  setoptions(current => [...current , myoptions])
+  console.log("options  :" ,options)
+
+}
 
   const handleDelete = (id , index)=>{
+
     console.log("id", id);
 
     for (let i = 0; i < columns[1].items.length; i++) {
@@ -163,16 +201,44 @@ const Test = () => {
         
       }
     }
+    setoptions([ {"index" : 0 ,"id" :0 , "label" : `label`}])
+    setblockOption([])
+    setnbroption(1)
   }
 const [alledite , setalledite] = useState([])
-  const handleupdate = (e,id , index)=>{
+
+
+
+  const handleupdate = (e,id , index,optid)=>{
 
    alledite.map((x)=>{
-    if(x.id === id){
+    if(x.id === id && x.title != "Checkbox"){
       x.label = e.target.value
+    }else if(x.id === id && x.title =="Checkbox"){
+      options.map((opt)=>{
+        if(opt.id === optid){
+          opt.label = e.target.value
+        }
+      })
     }
    })
     setlabelValue(e.target.value)
+    //  blockOption.map((pt)=>{
+      //   pt.options.map((ptma)=>{
+      //     console.log("ptma :  ", ptma)
+
+      //   })
+      //  })
+    
+  }
+  const handleupdatetitle = (e,id , index)=>{
+
+   alledite.map((x)=>{
+    if(x.id === id ){
+      x.title = e.target.value
+    }
+   })
+   settitleValue(e.target.value)
 
   }
 
@@ -192,10 +258,10 @@ const [alledite , setalledite] = useState([])
         !columns[1]["items"][i].tag.includes("input")
       ) {
          columns[1]["items"][i].label =  newlabel;
-        console.log("fromhandleOnedit", columns[1]["items"][i].label);
+         
+         console.log("fromhandleOnedit", columns[1]["items"][i].label);
         // let result = [...alledite]
         // let data = {"index" : index , "id" : columns[1]["items"][i].id , 'label':columns[1]["items"][i].label}
-        
       //  for(let i =0 ; i< alledite.length; i++){
       //   if(alledite.includes(alledite[i]['id'])){
       //     alledite.splice(alledite[i]["index"],1)
@@ -212,6 +278,28 @@ const [alledite , setalledite] = useState([])
     setlabelValue("")
     setshowOptionbar(-1 )
    console.log("alledited" ,alledite)
+
+
+  //  setindexblockOption(indexblockOption+1)
+  //  blockOption.splice(indexblockOption , 0 , {"idop" :id ,options})
+  //  setoptions([])
+      
+  //  console.log("blockOption",blockOption)
+
+
+      //  blockOption.map((pt)=>{
+      //   pt.options.map((ptma)=>{
+      //     console.log("ptma :  ", ptma)
+
+      //   })
+      //  })
+    
+      
+
+      
+    
+
+   
   };
 
 
@@ -223,6 +311,7 @@ const [alledite , setalledite] = useState([])
   const [hover , sethover] = useState(-1)
   const [showOptionbar , setshowOptionbar] = useState(-1)
   const [labelValue , setlabelValue] = useState()
+  const [titleValue , settitleValue] = useState()
 
   return (
     <>
@@ -269,22 +358,62 @@ const [alledite , setalledite] = useState([])
                           >
                               
                          
-                            {id == 1 ? (
-                              <div className="titleofelem">
+                            {id == 1 ? (<div className="titleofelem">
                                 {" "}
-                                <h3> {item.title} </h3>
+                                <h3>{  item.tag.includes("input") && item.tag != "input type='radio' " ? item.label : item.title} </h3>
                               </div>
                             ) : (
-                              <span></span>
+                              null
                             )}
-                            {id == 1 ? (
+                            {id == 1  ? (
                              <> 
-                              <div
+                             <form> 
+                           { item.tag != "input type='radio' "  ?
+
+
+                           <div
                                 className="elemnt"
                                 dangerouslySetInnerHTML={{
-                                  __html: `<${item.tag}>   ${item.label}   </${item.tag}>`,
+                                  __html: `<${item.tag} class=${item.tag == "input type='radio' " ? "Checkbox": ""  }   > 
+                                    ${ item.tag.includes("input") && item.tag != "input type='radio' " ? "" : `<span class="${item.class}">${item.label} </span>`  } 
+                                      </${item.tag}> `,
                                 }}
-                              />
+                              /> : 
+                              
+                             <> {
+      //  blockOption.map((pt)=>{
+      //   pt.options.map((ptma)=>{
+      //     console.log("ptma :  ", ptma)
+
+      //   })
+      //  })
+    
+
+
+options.map((opt)=>(
+  opt.emplacementid == item.id ?
+    <div
+    className="elemnt"
+    dangerouslySetInnerHTML={{
+      __html: `<${item.tag} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " ? "Checkbox": "" }   > 
+        ${ item.tag.includes("input") && item.tag != "input type='radio' " ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
+          </${item.tag}>`,
+    }}
+  /> : null
+
+  
+                              
+                              
+
+
+                              ))
+                            }</>
+                             }
+
+</form>
+
+
+
                                    {hover === index ?    <div  className="optionbar">
                               <div>  {id == 1 ? (
                                   <span
@@ -297,7 +426,7 @@ const [alledite , setalledite] = useState([])
                                     edit
                                   </span>
                                 ) :(
-                                  <span></span>
+                                  null
                                 )}
                               </div>
                               <div>  {id == 1 ? (
@@ -305,32 +434,96 @@ const [alledite , setalledite] = useState([])
                                delete
                                </span>
                                 ) : (
-                                  <span></span>
+                                  null
                                 )}
                               </div>
 
 
-                            </div> : <span></span>}
+                            </div> : null}
 
                             
-                            {  showOptionbar == index ?  <div  className="editContent">
+                            {showOptionbar == index ?  <div  className="editContent">
                                   <div className="editInput"> 
                                
                                  {/* <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1 ,item.id )}} className="material-symbols-outlined">close</span></div> */}
-                                 <div className="toGrid">
+                             {   item.tag != "input type='radio' "  ?  <div className="toGrid">
                                   <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
-                                  <div  className="inputdiv"> {    alledite.map((x)=>( 
-                                    item.id === x.id ? 
-                                    <input value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text" />
-                                    : <span></span>
-                                  )) }</div> 
-                                  </div>
-                                  <div className="buttondiv"> <button style={{height:"25px"}} onClick={() => {
-                                      handleOnEdit(item.id , index);
-                                    }}> Update  </button>  </div>
+                                  <div  className="inputdiv"> {
+                                         
+                                alledite.map((x)=>( 
+                                    item.id === x.id ? <input value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text" />
+                                    
+                                    : null
+                                  )) 
+                                  }
+                                   </div> 
+                                   
+                                {item.tag.includes("input") && item.tag != "input type='radio' "  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
+
+                                {item.tag.includes("input") && item.tag != "input type='radio' "  ?  null:  <div  className="inputdiv">  { 
+
+                                                 
+                                     alledite.map((x)=>( 
+                                             item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
+                                             : null
+                                           ))     
+
+                                           }
+                                 
+                                  </div>}
+                                
+                                  </div> :
+
+<>
+
+                        { 
+                      
+                          options.map((opt)=>(
+                            opt.emplacementid == item.id ?
+                          <div className="toGrid">
+                                  <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
+                                  <div  className="labeldiv"> <label htmlFor="label">{opt.id}</label> </div> 
+                                  <div  className="inputdiv"> {  
+                                         
+                                alledite.map((x)=>( 
+                                    item.id === x.id ? <input value={opt.label} onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
+                                    
+                                    : null
+                                  )) 
+                                  }
+                                   </div> 
+                                   
+                                {item.tag.includes("input") && item.tag != "input type='radio' "  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
+
+                                {item.tag.includes("input") && item.tag != "input type='radio' "  ?  null :  <div  className="inputdiv">  { 
+
+                                                 
+                                     alledite.map((x)=>( 
+                                             item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
+                                             : null
+                                           ))     
+
+                                           }
+                                 
+                                  </div>}
                                   </div>
 
-                                </div> :  <span></span>  }
+                               
+                              
+                   : null     ))
+                                }
+
+                                  <div> <button onClick={()=>{addoption(item.id)}}>Add Option</button></div>
+
+                                  </>
+                                  
+                                }
+                                  <div className="buttondiv"> <button style={{height:"25px"}} onClick={() => {
+                                      handleOnEdit(item.id , index);
+                                    }}> Close  </button>  </div>
+                                  </div>
+
+                                </div> :  null  }
                                 </>
                             ) : (
                               <span className="buttons">{item.title} </span>

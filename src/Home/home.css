@@ -95,10 +95,13 @@ h3{
 }
 
 .elemnt input{
-    width: 100%;
+    width: 99%;
     height: 26px;
     border: 3px solid #989898;
     border-radius: 4px;
+}
+.elemnt .Checkbox{
+    width: 19px;
 }
 
 .elemnt  h1{
@@ -217,4 +220,10 @@ h3{
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
    
+}
+
+.labelL{
+    position: relative;
+    bottom: 9px;
+    font-weight: 700;
 }
