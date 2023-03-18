@@ -1,4 +1,3 @@
-import { use } from "i18next";
 import React, { useCallback, useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "react-uuid";
