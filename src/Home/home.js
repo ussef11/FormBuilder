@@ -1,9 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "react-uuid";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
+
 import "./home.css";
 const Home = () => {
   const [labelheader, setlabelheader] = useState("Header");
+  const [typehead, settypehead] = useState("");
 
   const itemsfrombackend = [
     {
@@ -30,7 +34,7 @@ const Home = () => {
     {
       id: "4",
       title: "Header",
-      thumbs: "header.png",
+      thumbs: "header",
       tag: "h1",
       label: labelheader,
     },
@@ -109,7 +113,7 @@ const Home = () => {
       let Header = {
         id: "4",
         title: "Header",
-        thumbs: "header.png",
+        thumbs: "header",
         tag: "h1",
         label: labelheader,
       };
@@ -200,7 +204,7 @@ const addoption = (id)=>
   
 
   setnbroption(nbroption+1)
-  let myoptions = {"emplacementid" : id,"index" : nbroption ,"id" :nbroption , "label" : `label${nbroption}`}
+  let myoptions = {"emplacementid" : id,"index" : nbroption ,"id" :nbroption , "label" : `label`}
 
   setoptions(current => [...current , myoptions])
   console.log("options  :" ,options)
@@ -240,7 +244,16 @@ const HandledeleteOption = (id , index)=>{
   }
 const [alledite , setalledite] = useState([])
 
-
+const handlechangehead  =(e , id)=>{
+       settypehead(e.target.value)
+       alledite.map((x)=>{
+        if(x.id === id && x.thumbs == "header"){
+          x.tag = e.target.value 
+        
+        
+        }
+        })
+}
 
   const handleupdate = (e,id , index,optid)=>{
 
@@ -349,6 +362,7 @@ const [alledite , setalledite] = useState([])
   const [labelValue , setlabelValue] = useState()
   const [titleValue , settitleValue] = useState()
 
+
   return (
     <>
       <h1>formBuilder</h1>
@@ -396,7 +410,7 @@ const [alledite , setalledite] = useState([])
                          
                             {id == 1 ? (<div className="titleofelem">
                                 {" "}
-                                <h3>{  (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ? item.label : item.title} </h3>
+                                <h3 className="head3">{  (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ? item.label : item.title} </h3>
                               </div>
                             ) : (
                               null
@@ -488,6 +502,7 @@ options.map((opt)=>(
                                   )) 
                                   }
                                    </div> 
+                                  
                                    
                                 {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ")  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
 
@@ -501,11 +516,51 @@ options.map((opt)=>(
 
                                            }
                                  
-                                  </div>}
+                                 {item.thumbs == "header" ? 
+                
+
+                                  <div className="optiondiv"> 
+                                             <div style={{marginLeft:'-105px'}} className="labeldiv"> <label htmlFor="label">Type :</label> </div> 
+                                  <Select value={typehead} onChange={(e)=>{handlechangehead(e , item.id)}} className="myselect" 
+
+                                   label="Type"
+                                   labelId="demo-simple-select-label"
+                                   id="demo-simple-select"
+                                  sx={{
+                                    border: "1px solid fff",
+                                    color: "black",
+                                    "& .MuiSvgIcon-root": {
+                                      color: "black",
+                                    },
+                                  }}
+                                  >
+                                    <MenuItem  disabled>type</MenuItem>
+                                    <MenuItem  key={"h1"} value={"h1"}>h1</MenuItem>
+                                    <MenuItem  key={"h2"} value={"h2"}>h2</MenuItem>
+                                    <MenuItem  key={"h3"} value={"h3"}>h3</MenuItem>
+                                    <MenuItem  key={"h4"} value={"h4"}>h4</MenuItem>
+                                    <MenuItem  key={"h5"} value={"h5"}>h5</MenuItem>
+                                  </Select></div> :
+                                  null
+                                  
+                                }
                                 
+                                  </div>}
+
+                                 
+
+                                
+
+
                                   </div> :
 
 <>
+
+
+
+
+
+
 
 <div className="titlediv">
                    {   ( item.tag.includes("input") && item.tag != "input type='radio' " &&  item.tag != "input type='checkbox' ")   ?  null  :
