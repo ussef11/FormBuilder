@@ -119,7 +119,6 @@ h3{
     margin-top: -1px;
 }
 .titleofelem{
-    width: 107px;
     margin-left: 7px;
     margin-top: 2px;
 }
@@ -252,4 +251,9 @@ h3{
     position: relative;
     bottom: 9px;
     font-weight: 700;
+}
+
+.titlediv{
+    display: flex;
+    margin-left: 3%;
 }

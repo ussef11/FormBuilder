@@ -36,9 +36,17 @@ const Test = () => {
     },
     {
       id: "5",
-      title: "Checkbox",
+      title: "Radio Group",
       thumbs: "header.png",
       tag: "input type='radio' ",
+      label: "",
+      class:"labelL"
+    },
+    {
+      id: "6",
+      title: "Checkbox Group",
+      thumbs: "header.png",
+      tag: "input type='checkbox' ",
       label: "",
       class:"labelL"
     },
@@ -105,13 +113,21 @@ const Test = () => {
         tag: "h1",
         label: labelheader,
       };
-     let checkbox = {
+     let Radio = {
         id: "5",
-        title: "Checkbox",
+        title: "Radio Group",
         thumbs: "header.png",
         tag: "input type='radio' ",
         label: "",
         class:"labelL"
+      }
+     let checkbox = {
+      id: "6",
+      title: "Checkbox Group",
+      thumbs: "header.png",
+      tag: "input type='checkbox' ",
+      label: "",
+      class:"labelL"
       }
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
@@ -126,7 +142,10 @@ const Test = () => {
       if (copied[0].id == copied[0].id && copied[0].title == "Header") {
         sourceItems.splice(source.index, 0, Header);
       }
-      if (copied[0].id == copied[0].id && copied[0].title == "Checkbox") {
+      if (copied[0].id == copied[0].id && copied[0].title == "Radio Group") {
+        sourceItems.splice(source.index, 0, Radio);
+      }
+      if (copied[0].id == copied[0].id && copied[0].title == "Checkbox Group") {
         sourceItems.splice(source.index, 0, checkbox);
       }
       destItems.splice(destination.index, 0, copied[0]);
@@ -215,7 +234,7 @@ const HandledeleteOption = (id , index)=>{
         
       }
     }
-    setoptions([ ])
+    
     setblockOption([])
     setnbroption(1)
   }
@@ -225,17 +244,23 @@ const [alledite , setalledite] = useState([])
 
   const handleupdate = (e,id , index,optid)=>{
 
-   alledite.map((x)=>{
-    if(x.id === id && x.tag != "input type='radio' "){
-      x.label = e.target.value
-    }else if(x.id === id && x.tag =="input type='radio' "){
-      options.map((opt)=>{
-        if(opt.id === optid){
-          opt.label = e.target.value
-        }
-      })
-    }
-   })
+    alledite.map((x)=>{
+      if(x.id === id && x.tag != "input type='radio' " &&  x.tag != "input type='checkbox' "){
+        x.label = e.target.value
+      }else if(x.id === id && x.tag =="input type='radio' "){
+        options.map((opt)=>{
+          if(opt.id === optid){
+            opt.label = e.target.value
+          }
+        })
+      }else if(x.id == id && x.tag == "input type='checkbox' "){
+        options.map((opt)=>{
+          if(opt.id === optid){
+            opt.label = e.target.value
+          }
+        })
+      }
+     })
     setlabelValue(e.target.value)
 
     
@@ -371,7 +396,7 @@ const [alledite , setalledite] = useState([])
                          
                             {id == 1 ? (<div className="titleofelem">
                                 {" "}
-                                <h3>{  item.tag.includes("input") && item.tag != "input type='radio' " ? item.label : item.title} </h3>
+                                <h3>{  (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ? item.label : item.title} </h3>
                               </div>
                             ) : (
                               null
@@ -379,14 +404,14 @@ const [alledite , setalledite] = useState([])
                             {id == 1  ? (
                              <> 
                              <form> 
-                           { item.tag != "input type='radio' "  ?
+                           { item.tag != "input type='radio' " && item.tag != "input type='checkbox' " ?
 
 
                            <div
                                 className="elemnt"
                                 dangerouslySetInnerHTML={{
-                                  __html: `<${item.tag} class=${item.tag == "input type='radio' " ? "Checkbox": ""  }   > 
-                                    ${ item.tag.includes("input") && item.tag != "input type='radio' " ? "" : `<span class="${item.class}">${item.label} </span>`  } 
+                                  __html: `<${item.tag} class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": ""  }   > 
+                                    ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") ? "" : `<span class="${item.class}">${item.label} </span>`  } 
                                       </${item.tag}> `,
                                 }}
                               /> : 
@@ -401,8 +426,8 @@ options.map((opt)=>(
     <div
     className="elemnt"
     dangerouslySetInnerHTML={{
-      __html: `<${item.tag} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " ? "Checkbox": "" }   > 
-        ${ item.tag.includes("input") && item.tag != "input type='radio' " ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
+      __html: `<${item.tag} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": "" }   > 
+        ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&item.tag != "input type='checkbox' ")  ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
           </${item.tag}>`,
     }}
   /> : null
@@ -452,7 +477,7 @@ options.map((opt)=>(
                                   <div className="editInput"> 
                                
                                  {/* <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1 ,item.id )}} className="material-symbols-outlined">close</span></div> */}
-                             {   item.tag != "input type='radio' "  ?  <div className="toGrid">
+                             {   item.tag != "input type='radio' " && item.tag != "input type='checkbox' "  ?  <div className="toGrid">
                                   <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
                                   <div  className="inputdiv"> {
                                          
@@ -464,9 +489,9 @@ options.map((opt)=>(
                                   }
                                    </div> 
                                    
-                                {item.tag.includes("input") && item.tag != "input type='radio' "  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
+                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ")  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
 
-                                {item.tag.includes("input") && item.tag != "input type='radio' "  ?  null:  <div  className="inputdiv">  { 
+                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ")  ?  null:  <div  className="inputdiv">  { 
 
                                                  
                                      alledite.map((x)=>( 
@@ -482,9 +507,29 @@ options.map((opt)=>(
 
 <>
 
+<div className="titlediv">
+                   {   ( item.tag.includes("input") && item.tag != "input type='radio' " &&  item.tag != "input type='checkbox' ")   ?  null  :
+                                  <div   className="labeldiv">  {     <label htmlFor="label">Title</label>  }</div> }
+
+                                {  ( item.tag.includes("input") && item.tag != "input type='radio' " &&  item.tag != "input type='checkbox' ")  ?  null  :
+                                
+                                  <div style={{width:"18%"}} className="inputdiv">  { 
+
+                                                 
+                                     alledite.map((x)=>( 
+                                      
+                                             item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
+                                             : null
+                                           ))     
+
+                                           }
+                                 
+                                  </div>}
+                                  </div>
+
                         { 
                       
-                          options.map((opt)=>(
+                          options.map((opt, i)=>(
                             opt.emplacementid == item.id  ?
                           <div className="toGrid">
                                   <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
@@ -492,33 +537,22 @@ options.map((opt)=>(
                                   <div  className="inputdiv"> {   
                                          
                                 alledite.map((x)=>( 
-                                    item.id === x.id ? <input value={opt.label} onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
+                                    item.id === x.id ? <input value={opt.label}  onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
                                     
                                     : null
                                   )) 
                                   }
                                    </div> 
                                    
-                                {item.tag.includes("input") && item.tag != "input type='radio' "  ? null  :  <div style={{width:0}}  className="labeldiv">  {    opt.index == 1 ? <label htmlFor="label">Title</label> : null }</div> }
-
-                                {item.tag.includes("input") && item.tag != "input type='radio' "  ?  null :  <div  className="inputdiv">  { 
-
-                                                 
-                                     alledite.map((x)=>( 
-                                       opt.index == 1 ?
-                                             item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
-                                             : null
-                                        :null   ))     
-
-                                           }
-                                 
-                                  </div>}
+                   
                                   </div>
 
                                
                               
                    : null     ))
+                   
                                 }
+
 
                                   <div> <button className="addoption" onClick={()=>{addoption(item.id)}}>Add Option <span className="plus">+</span> </button></div>
 
