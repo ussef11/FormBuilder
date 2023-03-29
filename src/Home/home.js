@@ -54,6 +54,22 @@ const Home = () => {
       label: "",
       class:"labelL"
     },
+    {
+      id: "7",
+      title: "textarea",
+      thumbs: "header.png",
+      tag: "textarea",
+      label: "textarea",
+      class:"labelL"
+    },
+    {
+      id: "8",
+      title: "Paragraph",
+      thumbs: "header.png",
+      tag: "p",
+      label: "Paragraph",
+      class:"labelL"
+    },
   ];
 
   const columnsfrombackend = {
@@ -133,6 +149,22 @@ const Home = () => {
       label: "",
       class:"labelL"
       }
+     let textarea = {
+      id: "7",
+      title: "textarea",
+      thumbs: "header.png",
+      tag: "textarea",
+      label: "textarea",
+      class:"labelL"
+      }
+     let Paragraph = {
+      id: "8",
+      title: "Paragraph",
+      thumbs: "header.png",
+      tag: "p",
+      label: "Paragraph",
+      class:"labelL"
+      }
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
         sourceItems.splice(source.index, 0, input);
@@ -151,6 +183,12 @@ const Home = () => {
       }
       if (copied[0].id == copied[0].id && copied[0].title == "Checkbox Group") {
         sourceItems.splice(source.index, 0, checkbox);
+      }
+      if (copied[0].id == copied[0].id && copied[0].title == "textarea") {
+        sourceItems.splice(source.index, 0, textarea);
+      }
+      if (copied[0].id == copied[0].id && copied[0].title == "Paragraph") {
+        sourceItems.splice(source.index, 0, Paragraph);
       }
       destItems.splice(destination.index, 0, copied[0]);
       let newitem = sourceItems;
@@ -410,7 +448,7 @@ const handlechangehead  =(e , id)=>{
                          
                             {id == 1 ? (<div className="titleofelem">
                                 {" "}
-                                <h3 className="head3">{  (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ? item.label : item.title} </h3>
+                                <h3 className="head3">{  (item.tag.includes("input") &&  item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ||item.tag.includes('textarea') ? item.label : item.title} </h3>
                               </div>
                             ) : (
                               null
@@ -425,8 +463,8 @@ const handlechangehead  =(e , id)=>{
                                 className="elemnt"
                                 dangerouslySetInnerHTML={{
                                   __html: `<${item.tag} class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": ""  }   > 
-                                    ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") ? "" : `<span class="${item.class}">${item.label} </span>`  } 
-                                      </${item.tag}> `,
+                                    ${ (item.tag.includes("input")  && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea') ? "" : `<span class="${item.class}">${item.label} </span>`  } 
+                                     </${item.tag}>`,
                                 }}
                               /> : 
                               
@@ -441,7 +479,7 @@ options.map((opt)=>(
     className="elemnt"
     dangerouslySetInnerHTML={{
       __html: `<${item.tag} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": "" }   > 
-        ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&item.tag != "input type='checkbox' ")  ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
+        ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
           </${item.tag}>`,
     }}
   /> : null
@@ -504,9 +542,9 @@ options.map((opt)=>(
                                    </div> 
                                   
                                    
-                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ")  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
+                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
 
-                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ")  ?  null:  <div  className="inputdiv">  { 
+                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ?  null:  <div  className="inputdiv">  { 
 
                                                  
                                      alledite.map((x)=>( 
