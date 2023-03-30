@@ -258,13 +258,27 @@ ul{
    
 }
 
-.labelL{
+.labelL {
     position: relative;
-    bottom: 2px;
+    bottom: 8px;
     font-weight: 700;
 }
 
 .titlediv{
     display: flex;
     margin-left: 3%;
+}
+
+.requireddiv{
+    display: flex;
+    margin-left: 6%;
+}
+
+.reqtitlediv{
+    display: flex;
+}
+
+.req{
+    margin-left:  5px;
+    color:  red;
 }
