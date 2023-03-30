@@ -16,6 +16,7 @@ const Home = () => {
       thumbs: "input.png",
       tag: "input",
       label: "input",
+      required : false
     },
     {
       id: "2",
@@ -23,6 +24,7 @@ const Home = () => {
       thumbs: "button.png",
       tag: "button",
       label: "button",
+      required : false
     },
     {
       id: "3",
@@ -30,6 +32,7 @@ const Home = () => {
       thumbs: "file.png",
       tag: "input type='file' ",
       label: "",
+      required : false
     },
     {
       id: "4",
@@ -37,6 +40,7 @@ const Home = () => {
       thumbs: "header",
       tag: "h1",
       label: labelheader,
+      required : false
     },
     {
       id: "5",
@@ -44,15 +48,17 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='radio' ",
       label: "",
-      class:"labelL"
+      class:"labelL",
+      required : false
     },
     {
       id: "6",
       title: "Checkbox Group",
-      thumbs: "header.png",
+      thumbs: "Checkbox.png",
       tag: "input type='checkbox' ",
       label: "",
-      class:"labelL"
+      class:"labelL",
+      required : false
     },
     {
       id: "7",
@@ -60,7 +66,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "textarea",
       label: "textarea",
-      class:"labelL"
+      class:"labelL",
+      required : false
     },
     {
       id: "8",
@@ -68,7 +75,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "p",
       label: "Paragraph",
-      class:"labelL"
+      class:"labelL",
+      required : false
     },
     {
       id: "9",
@@ -76,7 +84,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='date' ",
       label: "Date Field",
-      class:"labelL"
+      class:"labelL",
+      required : false
     },
     {
       id: "10",
@@ -84,7 +93,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='Number' ",
       label: "Number",
-      class:"labelL"
+      class:"labelL",
+      required : false
     },
   ];
 
@@ -126,6 +136,7 @@ const Home = () => {
         thumbs: "input.png",
         tag: "input",
         label: "input",
+        required : false
       };
       let button = {
         id: "2",
@@ -133,6 +144,7 @@ const Home = () => {
         thumbs: "button.png",
         tag: "button",
         label: "button",
+        required : false
       };
       let File = {
         id: "3",
@@ -140,6 +152,7 @@ const Home = () => {
         thumbs: "file.png",
         tag: "input type='file' ",
         label: "",
+        required : false
       };
 
       let Header = {
@@ -148,6 +161,7 @@ const Home = () => {
         thumbs: "header",
         tag: "h1",
         label: labelheader,
+        required : false
       };
      let Radio = {
         id: "5",
@@ -155,7 +169,8 @@ const Home = () => {
         thumbs: "header.png",
         tag: "input type='radio' ",
         label: "",
-        class:"labelL"
+        class:"labelL",
+        required : false
       }
      let checkbox = {
       id: "6",
@@ -163,7 +178,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='checkbox' ",
       label: "",
-      class:"labelL"
+      class:"labelL",
+      required : false
       }
      let textarea = {
       id: "7",
@@ -171,7 +187,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "textarea",
       label: "textarea",
-      class:"labelL"
+      class:"labelL",
+      required : false
       }
      let Paragraph = {
       id: "8",
@@ -179,7 +196,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "p",
       label: "Paragraph",
-      class:"labelL"
+      class:"labelL",
+      required : false
       }
      let Date = {
       id: "9",
@@ -187,7 +205,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='date' ",
       label: "Date Field",
-      class:"labelL"
+      class:"labelL",
+      required : false
       }
      let Number = {
       id: "10",
@@ -195,7 +214,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='Number' ",
       label: "Number",
-      class:"labelL"
+      class:"labelL",
+      required : false
       }
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
@@ -273,6 +293,7 @@ const Home = () => {
   const [options , setoptions] = useState([])
  const [indexblockOption , setindexblockOption] = useState(0)
  const [blockOption , setblockOption] = useState([{"index" : 0 ,"id" :0 , "label" : `label`}])
+ const [isrequired , setisrequired] = useState(false)
 
 const addoption = (id)=>
 {
@@ -354,6 +375,26 @@ const handlechangehead  =(e , id)=>{
 
     
   }
+
+
+  const handlereq  = (e , id)=>{
+ alledite.map((x)=>{
+  if(x.id == id){
+    if(e.target.checked){
+      x.required = true
+     }
+     else{
+      x.required = false
+     }
+     setisrequired(current => !current)
+ 
+  }
+ })
+     
+  }
+
+
+
   const handleupdatetitle = (e,id , index)=>{
 
    alledite.map((x)=>{
@@ -484,9 +525,12 @@ const handlechangehead  =(e , id)=>{
                           >
                               
                          
-                            {id == 1 ? (<div className="titleofelem">
+                            {id == 1 ? (<div className="reqtitlediv">   <div className="titleofelem">
                                 {" "}
                                 <h3 className="head3">{  (item.tag.includes("input") &&  item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ||item.tag.includes('textarea') ? item.label : item.title} </h3>
+                              </div> 
+                              
+                              <div> {item.required && <span className='req'> *</span>} </div> 
                               </div>
                             ) : (
                               null
@@ -500,8 +544,8 @@ const handlechangehead  =(e , id)=>{
                            <div
                                 className="elemnt"
                                 dangerouslySetInnerHTML={{
-                                  __html: `<${item.tag} class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": ""  }   > 
-                                    ${ (item.tag.includes("input")  && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea') ? "" : `<span class="${item.class}">${item.label} </span>`  } 
+                                  __html: `<${item.tag} ${item.required ? 'required' : ''} class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": ""  }   > 
+                                    ${ (item.tag.includes("input")  && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea') ? "" : `${item.label}`  } 
                                      </${item.tag}>`,
                                 }}
                               /> : 
@@ -565,6 +609,13 @@ options.map((opt)=>(
                             
                             {showOptionbar == index ?  <div  className="editContent">
                                   <div className="editInput"> 
+
+                                  <div className="requireddiv">
+                                  <div className="requiredinputdiv"> <input type="checkbox" value={isrequired} onChange={(e)=> {handlereq(e , item.id)}} name="required"  /> </div>
+                                    <div className="requiredlabeldiv">   <label>required </label> </div>
+                                 
+                                  
+                                  </div>
                                
                                  {/* <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1 ,item.id )}} className="material-symbols-outlined">close</span></div> */}
                              {   item.tag != "input type='radio' " && item.tag != "input type='checkbox' "  ?  <div className="toGrid">
@@ -572,11 +623,13 @@ options.map((opt)=>(
                                   <div  className="inputdiv"> {
                                          
                                 alledite.map((x)=>( 
-                                    item.id === x.id ? <input value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text" />
-                                    
-                                    : null
+                                  item.tag == 'p' ?
+                                     (item.id === x.id ? (<textarea value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text"></textarea>) : null) :
+                                     (item.id === x.id ? <input value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text" />: null)
+
                                   )) 
                                   }
+
                                    </div> 
                                   
                                    
