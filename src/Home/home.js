@@ -70,6 +70,22 @@ const Home = () => {
       label: "Paragraph",
       class:"labelL"
     },
+    {
+      id: "9",
+      title: "Date Field",
+      thumbs: "header.png",
+      tag: "input type='date' ",
+      label: "Date Field",
+      class:"labelL"
+    },
+    {
+      id: "10",
+      title: "Number",
+      thumbs: "header.png",
+      tag: "input type='Number' ",
+      label: "Number",
+      class:"labelL"
+    },
   ];
 
   const columnsfrombackend = {
@@ -165,6 +181,22 @@ const Home = () => {
       label: "Paragraph",
       class:"labelL"
       }
+     let Date = {
+      id: "9",
+      title: "Date Field",
+      thumbs: "header.png",
+      tag: "input type='date' ",
+      label: "Date Field",
+      class:"labelL"
+      }
+     let Number = {
+      id: "10",
+      title: "Number",
+      thumbs: "header.png",
+      tag: "input type='Number' ",
+      label: "Number",
+      class:"labelL"
+      }
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
         sourceItems.splice(source.index, 0, input);
@@ -189,6 +221,12 @@ const Home = () => {
       }
       if (copied[0].id == copied[0].id && copied[0].title == "Paragraph") {
         sourceItems.splice(source.index, 0, Paragraph);
+      }
+      if (copied[0].id == copied[0].id && copied[0].title == "Date") {
+        sourceItems.splice(source.index, 0, Date);
+      }
+      if (copied[0].id == copied[0].id && copied[0].title == "Number") {
+        sourceItems.splice(source.index, 0, Date);
       }
       destItems.splice(destination.index, 0, copied[0]);
       let newitem = sourceItems;
