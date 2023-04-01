@@ -530,7 +530,7 @@ const handlechangehead  =(e , id)=>{
                                 <h3 className="head3">{  (item.tag.includes("input") &&  item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ||item.tag.includes('textarea') ? item.label : item.title} </h3>
                               </div> 
                               
-                              <div> {item.required && <span className='req'> *</span>} </div> 
+                              <div> {item.required && <span className='req'>*</span>} </div> 
                               </div>
                             ) : (
                               null
@@ -560,7 +560,7 @@ options.map((opt)=>(
     <div
     className="elemnt"
     dangerouslySetInnerHTML={{
-      __html: `<${item.tag} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": "" }   > 
+      __html: `<${item.tag} ${item.required && 'required'} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": "" }   > 
         ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
           </${item.tag}>`,
     }}
@@ -611,7 +611,19 @@ options.map((opt)=>(
                                   <div className="editInput"> 
 
                                   <div className="requireddiv">
-                                  <div className="requiredinputdiv"> <input type="checkbox" value={isrequired} onChange={(e)=> {handlereq(e , item.id)}} name="required"  /> </div>
+                                  <div className="requiredinputdiv">  
+
+                                  {alledite.map((x)=>(
+
+                                    item.id == x.id ? x.required ? <input checked  type="checkbox" value={isrequired} onChange={(e)=> {handlereq(e , item.id)}} name="required"   /> :
+                                    <input   type="checkbox" value={isrequired} onChange={(e)=> {handlereq(e , item.id)}} name="required"   /> :''
+
+                                  ))
+                                  }
+                                 
+
+
+                                   </div>
                                     <div className="requiredlabeldiv">   <label>required </label> </div>
                                  
                                   
@@ -721,7 +733,7 @@ options.map((opt)=>(
                                   <div  className="inputdiv"> {   
                                          
                                 alledite.map((x)=>( 
-                                    item.id === x.id ? <input value={opt.label}  onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
+                                    item.id === x.id ? <input value={opt.label} onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
                                     
                                     : null
                                   )) 
