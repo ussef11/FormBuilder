@@ -3,7 +3,8 @@ import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 import uuid from "react-uuid";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-
+import deletsvg from "../media/delete.svg";
+import editesvg from "../media/edit.svg";
 import "./home.css";
 const Home = () => {
   const [labelheader, setlabelheader] = useState("Header");
@@ -16,7 +17,7 @@ const Home = () => {
       thumbs: "input.png",
       tag: "input",
       label: "input",
-      required : false
+      required: false,
     },
     {
       id: "2",
@@ -24,7 +25,7 @@ const Home = () => {
       thumbs: "button.png",
       tag: "button",
       label: "button",
-      required : false
+      required: false,
     },
     {
       id: "3",
@@ -32,7 +33,7 @@ const Home = () => {
       thumbs: "file.png",
       tag: "input type='file' ",
       label: "",
-      required : false
+      required: false,
     },
     {
       id: "4",
@@ -40,7 +41,7 @@ const Home = () => {
       thumbs: "header",
       tag: "h1",
       label: labelheader,
-      required : false
+      required: false,
     },
     {
       id: "5",
@@ -48,8 +49,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='radio' ",
       label: "",
-      class:"labelL",
-      required : false
+      class: "labelL",
+      required: false,
     },
     {
       id: "6",
@@ -57,8 +58,8 @@ const Home = () => {
       thumbs: "Checkbox.png",
       tag: "input type='checkbox' ",
       label: "",
-      class:"labelL",
-      required : false
+      class: "labelL",
+      required: false,
     },
     {
       id: "7",
@@ -66,8 +67,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "textarea",
       label: "textarea",
-      class:"labelL",
-      required : false
+      class: "labelL",
+      required: false,
     },
     {
       id: "8",
@@ -75,8 +76,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "p",
       label: "Paragraph",
-      class:"labelL",
-      required : false
+      class: "labelL",
+      required: false,
     },
     {
       id: "9",
@@ -84,8 +85,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='date' ",
       label: "Date Field",
-      class:"labelL",
-      required : false
+      class: "labelL",
+      required: false,
     },
     {
       id: "10",
@@ -93,8 +94,8 @@ const Home = () => {
       thumbs: "header.png",
       tag: "input type='Number' ",
       label: "Number",
-      class:"labelL",
-      required : false
+      class: "labelL",
+      required: false,
     },
   ];
 
@@ -136,7 +137,7 @@ const Home = () => {
         thumbs: "input.png",
         tag: "input",
         label: "input",
-        required : false
+        required: false,
       };
       let button = {
         id: "2",
@@ -144,7 +145,7 @@ const Home = () => {
         thumbs: "button.png",
         tag: "button",
         label: "button",
-        required : false
+        required: false,
       };
       let File = {
         id: "3",
@@ -152,7 +153,7 @@ const Home = () => {
         thumbs: "file.png",
         tag: "input type='file' ",
         label: "",
-        required : false
+        required: false,
       };
 
       let Header = {
@@ -161,62 +162,62 @@ const Home = () => {
         thumbs: "header",
         tag: "h1",
         label: labelheader,
-        required : false
+        required: false,
       };
-     let Radio = {
+      let Radio = {
         id: "5",
         title: "Radio Group",
         thumbs: "header.png",
         tag: "input type='radio' ",
         label: "",
-        class:"labelL",
-        required : false
-      }
-     let checkbox = {
-      id: "6",
-      title: "Checkbox Group",
-      thumbs: "header.png",
-      tag: "input type='checkbox' ",
-      label: "",
-      class:"labelL",
-      required : false
-      }
-     let textarea = {
-      id: "7",
-      title: "textarea",
-      thumbs: "header.png",
-      tag: "textarea",
-      label: "textarea",
-      class:"labelL",
-      required : false
-      }
-     let Paragraph = {
-      id: "8",
-      title: "Paragraph",
-      thumbs: "header.png",
-      tag: "p",
-      label: "Paragraph",
-      class:"labelL",
-      required : false
-      }
-     let Date = {
-      id: "9",
-      title: "Date Field",
-      thumbs: "header.png",
-      tag: "input type='date' ",
-      label: "Date Field",
-      class:"labelL",
-      required : false
-      }
-     let Number = {
-      id: "10",
-      title: "Number",
-      thumbs: "header.png",
-      tag: "input type='Number' ",
-      label: "Number",
-      class:"labelL",
-      required : false
-      }
+        class: "labelL",
+        required: false,
+      };
+      let checkbox = {
+        id: "6",
+        title: "Checkbox Group",
+        thumbs: "header.png",
+        tag: "input type='checkbox' ",
+        label: "",
+        class: "labelL",
+        required: false,
+      };
+      let textarea = {
+        id: "7",
+        title: "textarea",
+        thumbs: "header.png",
+        tag: "textarea",
+        label: "textarea",
+        class: "labelL",
+        required: false,
+      };
+      let Paragraph = {
+        id: "8",
+        title: "Paragraph",
+        thumbs: "header.png",
+        tag: "p",
+        label: "Paragraph",
+        class: "labelL",
+        required: false,
+      };
+      let Date = {
+        id: "9",
+        title: "Date Field",
+        thumbs: "header.png",
+        tag: "input type='date' ",
+        label: "Date Field",
+        class: "labelL",
+        required: false,
+      };
+      let Number = {
+        id: "10",
+        title: "Number",
+        thumbs: "header.png",
+        tag: "input type='Number' ",
+        label: "Number",
+        class: "labelL",
+        required: false,
+      };
 
       if (copied[0].id == copied[0].id && copied[0].title == "input") {
         sourceItems.splice(source.index, 0, input);
@@ -246,7 +247,7 @@ const Home = () => {
         sourceItems.splice(source.index, 0, Date);
       }
       if (copied[0].id == copied[0].id && copied[0].title == "Number") {
-        sourceItems.splice(source.index, 0, Date);
+        sourceItems.splice(source.index, 0, Number);
       }
       destItems.splice(destination.index, 0, copied[0]);
       let newitem = sourceItems;
@@ -255,7 +256,7 @@ const Home = () => {
       console.log("removed", removed);
       console.log("destItems", destItems);
 
-      setalledite(destItems)
+      setalledite(destItems);
       setcolumns({
         ...columns,
         [source.droppableId]: {
@@ -282,133 +283,118 @@ const Home = () => {
     }
   };
   const [idhover, setidhover] = useState();
- 
-  const handledisplay = (index , id) =>{
-    setshowOptionbar(index)
- 
-    
-  }
-  
-  const [nbroption , setnbroption] = useState(1)
-  const [options , setoptions] = useState([])
- const [indexblockOption , setindexblockOption] = useState(0)
- const [blockOption , setblockOption] = useState([{"index" : 0 ,"id" :0 , "label" : `label`}])
- const [isrequired , setisrequired] = useState(false)
 
-const addoption = (id)=>
-{
+  const handledisplay = (index, id) => {
+    setshowOptionbar(index);
+  };
 
-  
+  const [nbroption, setnbroption] = useState(1);
+  const [options, setoptions] = useState([]);
+  const [indexblockOption, setindexblockOption] = useState(0);
+  const [blockOption, setblockOption] = useState([
+    { index: 0, id: 0, label: `label` },
+  ]);
+  const [isrequired, setisrequired] = useState(false);
 
-  setnbroption(nbroption+1)
-  let myoptions = {"emplacementid" : id,"index" : nbroption ,"id" :nbroption , "label" : `label`}
+  const addoption = (id) => {
+    setnbroption(nbroption + 1);
+    let myoptions = {
+      emplacementid: id,
+      index: nbroption,
+      id: nbroption,
+      label: `label`,
+    };
 
-  setoptions(current => [...current , myoptions])
-  console.log("options  :" ,options)
+    setoptions((current) => [...current, myoptions]);
+    console.log("options  :", options);
+  };
 
-}
-
-const HandledeleteOption = (id , index)=>{
-
-    options.map((x)=>{
-      if(id == x.id){
-        setoptions( optionss => optionss.filter(i => i.id != id)) 
-//  optionss get value of setoptions (options)
+  const HandledeleteOption = (id, index) => {
+    options.map((x) => {
+      if (id == x.id) {
+        setoptions((optionss) => optionss.filter((i) => i.id != id));
+        //  optionss get value of setoptions (options)
       }
-    })
+    });
 
-    console.log("options  :" ,options)
-  
+    console.log("options  :", options);
+  };
 
-}
-
-  const handleDelete = (id , index)=>{
-
+  const handleDelete = (id, index) => {
     console.log("id", id);
 
     for (let i = 0; i < columns[1].items.length; i++) {
       if (id == columns[1]["items"][i].id) {
-        console.log(index)
-        if(index>-1){
-          columns[1]["items"].splice(index,1)
+        console.log(index);
+        if (index > -1) {
+          columns[1]["items"].splice(index, 1);
         }
-        
       }
     }
-    
-    setblockOption([])
-    setnbroption(1)
-  }
-const [alledite , setalledite] = useState([])
 
-const handlechangehead  =(e , id)=>{
-       settypehead(e.target.value)
-       alledite.map((x)=>{
-        if(x.id === id && x.thumbs == "header"){
-          x.tag = e.target.value 
-        
-        
-        }
-        })
-}
+    setblockOption([]);
+    setnbroption(1);
+  };
+  const [alledite, setalledite] = useState([]);
 
-  const handleupdate = (e,id , index,optid)=>{
-
-    alledite.map((x)=>{
-      if(x.id === id && x.tag != "input type='radio' " &&  x.tag != "input type='checkbox' "){
-        x.label = e.target.value
-      }else if(x.id === id && x.tag =="input type='radio' "){
-        options.map((opt)=>{
-          if(opt.id === optid){
-            opt.label = e.target.value
-          }
-        })
-      }else if(x.id == id && x.tag == "input type='checkbox' "){
-        options.map((opt)=>{
-          if(opt.id === optid){
-            opt.label = e.target.value
-          }
-        })
+  const handlechangehead = (e, id) => {
+    settypehead(e.target.value);
+    alledite.map((x) => {
+      if (x.id === id && x.thumbs == "header") {
+        x.tag = e.target.value;
       }
-     })
-    setlabelValue(e.target.value)
+    });
+  };
 
-    
-  }
+  const handleupdate = (e, id, index, optid) => {
+    alledite.map((x) => {
+      if (
+        x.id === id &&
+        x.tag != "input type='radio' " &&
+        x.tag != "input type='checkbox' "
+      ) {
+        x.label = e.target.value;
+      } else if (x.id === id && x.tag == "input type='radio' ") {
+        options.map((opt) => {
+          if (opt.id === optid) {
+            opt.label = e.target.value;
+          }
+        });
+      } else if (x.id == id && x.tag == "input type='checkbox' ") {
+        options.map((opt) => {
+          if (opt.id === optid) {
+            opt.label = e.target.value;
+          }
+        });
+      }
+    });
+    setlabelValue(e.target.value);
+  };
 
+  const handlereq = (e, id) => {
+    alledite.map((x) => {
+      if (x.id == id) {
+        if (e.target.checked) {
+          x.required = true;
+        } else {
+          x.required = false;
+        }
+        setisrequired((current) => !current);
+      }
+    });
+  };
 
-  const handlereq  = (e , id)=>{
- alledite.map((x)=>{
-  if(x.id == id){
-    if(e.target.checked){
-      x.required = true
-     }
-     else{
-      x.required = false
-     }
-     setisrequired(current => !current)
- 
-  }
- })
-     
-  }
+  const handleupdatetitle = (e, id, index) => {
+    alledite.map((x) => {
+      if (x.id === id) {
+        x.title = e.target.value;
+      }
+    });
+    settitleValue(e.target.value);
+  };
 
-
-
-  const handleupdatetitle = (e,id , index)=>{
-
-   alledite.map((x)=>{
-    if(x.id === id ){
-      x.title = e.target.value
-    }
-   })
-   settitleValue(e.target.value)
-
-  }
-
-   const  handleOnEdit =  (id ,index) => {
+  const handleOnEdit = (id, index) => {
     let newlabel = labelValue;
-   
 
     //  const { source, destination } = result;
     //  const destColumn = columns[destination.droppableId];
@@ -421,64 +407,53 @@ const handlechangehead  =(e , id)=>{
         id == columns[1]["items"][i].id &&
         !columns[1]["items"][i].tag.includes("input")
       ) {
-         columns[1]["items"][i].label =  newlabel;
-         
-         console.log("fromhandleOnedit", columns[1]["items"][i].label);
+        columns[1]["items"][i].label = newlabel;
+
+        console.log("fromhandleOnedit", columns[1]["items"][i].label);
         // let result = [...alledite]
         // let data = {"index" : index , "id" : columns[1]["items"][i].id , 'label':columns[1]["items"][i].label}
-      //  for(let i =0 ; i< alledite.length; i++){
-      //   if(alledite.includes(alledite[i]['id'])){
-      //     alledite.splice(alledite[i]["index"],1)
-      //   }
-      //  }
-      //   console.log("index" , index)
-      //   alledite.splice(index,1)
-      //   alledite.splice(index,0,data)
-      //   // result.push(data)
-      //   setalledite(result)
+        //  for(let i =0 ; i< alledite.length; i++){
+        //   if(alledite.includes(alledite[i]['id'])){
+        //     alledite.splice(alledite[i]["index"],1)
+        //   }
+        //  }
+        //   console.log("index" , index)
+        //   alledite.splice(index,1)
+        //   alledite.splice(index,0,data)
+        //   // result.push(data)
+        //   setalledite(result)
         //  options.push({"emplacementid" : 0,"index" : 0 ,"id" :0 , "label" : `label`})
-        
       }
     }
-    setlabelValue("")
-    setshowOptionbar(-1 )
-   console.log("alledited" ,alledite)
-  //  options.push({"emplacementid" : 0,"index" : 0 ,"id" :0 , "label" : `label`})
-  //  console.log(options)
+    setlabelValue("");
+    setshowOptionbar(-1);
+    console.log("alledited", alledite);
+    //  options.push({"emplacementid" : 0,"index" : 0 ,"id" :0 , "label" : `label`})
+    //  console.log(options)
 
-  //  setindexblockOption(indexblockOption+1)
-  //  blockOption.splice(indexblockOption , 0 , {"idop" :id ,options})
-  //  setoptions([])
-      
-  //  console.log("blockOption",blockOption)
+    //  setindexblockOption(indexblockOption+1)
+    //  blockOption.splice(indexblockOption , 0 , {"idop" :id ,options})
+    //  setoptions([])
 
+    //  console.log("blockOption",blockOption)
 
-      //  blockOption.map((pt)=>{
-      //   pt.options.map((ptma)=>{
-      //     console.log("ptma :  ", ptma)
+    //  blockOption.map((pt)=>{
+    //   pt.options.map((ptma)=>{
+    //     console.log("ptma :  ", ptma)
 
-      //   })
-      //  })
-    
-      
-
-      
-    
-
-   
+    //   })
+    //  })
   };
 
-
-  const onMouseEnter = (index)=>{
-    sethover(index)
-  }
+  const onMouseEnter = (index) => {
+    sethover(index);
+  };
   const [index, setindex] = useState(uuid());
 
-  const [hover , sethover] = useState(-1)
-  const [showOptionbar , setshowOptionbar] = useState(-1)
-  const [labelValue , setlabelValue] = useState()
-  const [titleValue , settitleValue] = useState()
-
+  const [hover, sethover] = useState(-1);
+  const [showOptionbar, setshowOptionbar] = useState(-1);
+  const [labelValue, setlabelValue] = useState();
+  const [titleValue, settitleValue] = useState();
 
   return (
     <>
@@ -493,17 +468,15 @@ const handlechangehead  =(e , id)=>{
         >
           {Object.entries(columns).map(([id, data]) => (
             <Droppable droppableId={id}>
-
               {(provided, snapshot) => (
-           
                 <div
                   className={`formsDrop-${id}`}
                   ref={provided.innerRef}
-                  const style={{
+                  const
+                  style={{
                     backgroundColor: snapshot.isDraggingOver
                       ? "hsla(0,0%,100%,.25)"
                       : "transparent",
-                    
                   }}
                   {...provided.droppableProps}
                 >
@@ -520,254 +493,454 @@ const handlechangehead  =(e , id)=>{
                             {...provided.dragHandleProps}
                             ref={provided.innerRef}
                             className={id == 1 ? "elements" : "myli"}
-                            onMouseEnter={()=>{id == 1  ? onMouseEnter(index) : sethover(-1)  }}
-                            onMouseLeave={()=>{sethover(-1)}}
+                            onMouseEnter={() => {
+                              id == 1 ? onMouseEnter(index) : sethover(-1);
+                            }}
+                            onMouseLeave={() => {
+                              sethover(-1);
+                            }}
                           >
-                              
-                         
-                            {id == 1 ? (<div className="reqtitlediv">   <div className="titleofelem">
+                            {id == 1 ? (
+                              <div className="reqtitlediv">
                                 {" "}
-                                <h3 className="head3">{  (item.tag.includes("input") &&  item.tag != "input type='radio' ") && (item.tag.includes("input") &&  item.tag != "input type='checkbox' ") ||item.tag.includes('textarea') ? item.label : item.title} </h3>
-                              </div> 
-                              
-                              <div> {item.required && <span className='req'>*</span>} </div> 
+                                <div className="titleofelem">
+                                  {" "}
+                                  <h3 className="head3">
+                                    {(item.tag.includes("input") &&
+                                      item.tag != "input type='radio' " &&
+                                      item.tag.includes("input") &&
+                                      item.tag != "input type='checkbox' ") ||
+                                    item.tag.includes("textarea")
+                                      ? item.label
+                                      : item.title}{" "}
+                                  </h3>
+                                </div>
+                                <div>
+                                  {" "}
+                                  {item.required && (
+                                    <span className="req">*</span>
+                                  )}{" "}
+                                </div>
                               </div>
-                            ) : (
-                              null
-                            )}
-                            {id == 1  ? (
-                             <> 
-                             <form> 
-                           { item.tag != "input type='radio' " && item.tag != "input type='checkbox' " ?
-
-
-                           <div
-                                className="elemnt"
-                                dangerouslySetInnerHTML={{
-                                  __html: `<${item.tag} ${item.required ? 'required' : ''} class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": ""  }   > 
-                                    ${ (item.tag.includes("input")  && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea') ? "" : `${item.label}`  } 
+                            ) : null}
+                            {id == 1 ? (
+                              <>
+                                <form>
+                                  {item.tag != "input type='radio' " &&
+                                  item.tag != "input type='checkbox' " ? (
+                                    <div
+                                      className="elemnt"
+                                      dangerouslySetInnerHTML={{
+                                        __html: `<${item.tag} ${
+                                          item.required ? "required" : ""
+                                        } class=${
+                                          item.tag == "input type='radio' " ||
+                                          item.tag == "input type='checkbox' "
+                                            ? "Checkbox"
+                                            : ""
+                                        }   > 
+                                    ${
+                                      (item.tag.includes("input") &&
+                                        item.tag != "input type='radio' " &&
+                                        item.tag.includes("input") &&
+                                        item.tag != "input type='checkbox' ") ||
+                                      item.tag.includes("textarea")
+                                        ? ""
+                                        : `${item.label}`
+                                    } 
                                      </${item.tag}>`,
-                                }}
-                              /> : 
-                              
-                             <> {
-
-    
-
-
-options.map((opt)=>(
-  opt.emplacementid == item.id  ?
-    <div
-    className="elemnt"
-    dangerouslySetInnerHTML={{
-      __html: `<${item.tag} ${item.required && 'required'} id="${opt.id}" ${opt.label && `value=${opt.label}` }  ${item.title && `name=${item.title}` }  class=${item.tag == "input type='radio' " || item.tag == "input type='checkbox' " ? "Checkbox": "" }   > 
-        ${ (item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") &&item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ? "" : `<span class="${item.class}">${opt.label} </span>`  } 
+                                      }}
+                                    />
+                                  ) : (
+                                    <>
+                                      {" "}
+                                      {options.map((opt) =>
+                                        opt.emplacementid == item.id ? (
+                                          <div
+                                            className="elemnt"
+                                            dangerouslySetInnerHTML={{
+                                              __html: `<${item.tag} ${
+                                                item.required && "required"
+                                              } id="${opt.id}" ${
+                                                opt.label &&
+                                                `value=${opt.label}`
+                                              }  ${
+                                                item.title &&
+                                                `name=${item.title}`
+                                              }  class=${
+                                                item.tag ==
+                                                  "input type='radio' " ||
+                                                item.tag ==
+                                                  "input type='checkbox' "
+                                                  ? "Checkbox"
+                                                  : ""
+                                              }   > 
+        ${
+          (item.tag.includes("input") &&
+            item.tag != "input type='radio' " &&
+            item.tag.includes("input") &&
+            item.tag != "input type='checkbox' ") ||
+          item.tag.includes("textarea")
+            ? ""
+            : `<span class="${item.class}">${opt.label} </span>`
+        } 
           </${item.tag}>`,
-    }}
-  /> : null
+                                            }}
+                                          />
+                                        ) : null
+                                      )}
+                                    </>
+                                  )}
+                                </form>
 
-  
-                              
-                              
-
-
-                              ))
-                            }</>
-                             }
-
-</form>
-
-
-
-                                   {hover === index ?    <div  className="optionbar">
-                              <div>  {id == 1 ? (
-                                  <span
-                                    className="material-symbols-outlined"
-                                    onClick={() => {
-                                      handledisplay(index);
-                                    }}
-
-                                  >
-                                    edit
-                                  </span>
-                                ) :(
-                                  null
-                                )}
-                              </div>
-                              <div>  {id == 1 ? (
-                               <span onClick={()=>{handleDelete(item.id , index)}} className="material-symbols-outlined">
-                               delete
-                               </span>
-                                ) : (
-                                  null
-                                )}
-                              </div>
-
-
-                            </div> : null}
-
-                            
-                            {showOptionbar == index ?  <div  className="editContent">
-                                  <div className="editInput"> 
-
-                                  <div className="requireddiv">
-                                  <div className="requiredinputdiv">  
-
-                                  {alledite.map((x)=>(
-
-                                    item.id == x.id ? x.required ? <input checked  type="checkbox" value={isrequired} onChange={(e)=> {handlereq(e , item.id)}} name="required"   /> :
-                                    <input   type="checkbox" value={isrequired} onChange={(e)=> {handlereq(e , item.id)}} name="required"   /> :''
-
-                                  ))
-                                  }
-                                 
-
-
-                                   </div>
-                                    <div className="requiredlabeldiv">   <label>required </label> </div>
-                                 
-                                  
+                                {hover === index ? (
+                                  <div className="optionbar">
+                                    <div>
+                                      {" "}
+                                      {id == 1 ? (
+                                        <img
+                                          src={editesvg}
+                                          className="actionsvg"
+                                          onClick={() => {
+                                            handledisplay(index);
+                                          }}
+                                        />
+                                      ) : null}
+                                    </div>
+                                    <div>
+                                      {" "}
+                                      {id == 1 ? (
+                                        <img
+                                          src={deletsvg}
+                                          onClick={() => {
+                                            handleDelete(item.id, index);
+                                          }}
+                                          className="actionsvg"
+                                        />
+                                      ) : null}
+                                    </div>
                                   </div>
-                               
-                                 {/* <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1 ,item.id )}} className="material-symbols-outlined">close</span></div> */}
-                             {   item.tag != "input type='radio' " && item.tag != "input type='checkbox' "  ?  <div className="toGrid">
-                                  <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
-                                  <div  className="inputdiv"> {
-                                         
-                                alledite.map((x)=>( 
-                                  item.tag == 'p' ?
-                                     (item.id === x.id ? (<textarea value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text"></textarea>) : null) :
-                                     (item.id === x.id ? <input value={x.label} onChange={(e)=>{handleupdate(e ,item.id , index )}}  type="text" />: null)
+                                ) : null}
 
-                                  )) 
-                                  }
+                                {showOptionbar == index ? (
+                                  <div className="editContent">
+                                    <div className="editInput">
+                                      <div className="requireddiv">
+                                        <div className="requiredinputdiv">
+                                          {alledite.map((x) =>
+                                            item.id == x.id ? (
+                                              x.required ? (
+                                                <input
+                                                  checked
+                                                  type="checkbox"
+                                                  value={isrequired}
+                                                  onChange={(e) => {
+                                                    handlereq(e, item.id);
+                                                  }}
+                                                  name="required"
+                                                />
+                                              ) : (
+                                                <input
+                                                  type="checkbox"
+                                                  value={isrequired}
+                                                  onChange={(e) => {
+                                                    handlereq(e, item.id);
+                                                  }}
+                                                  name="required"
+                                                />
+                                              )
+                                            ) : (
+                                              ""
+                                            )
+                                          )}
+                                        </div>
+                                        <div className="requiredlabeldiv">
+                                          {" "}
+                                          <label>required </label>{" "}
+                                        </div>
+                                      </div>
 
-                                   </div> 
-                                  
-                                   
-                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ? null  :  <div  className="labeldiv"> <label htmlFor="label">Title</label> </div> }
+                                      {/* <div className="closeOptionbar"> <span onClick={()=>{setshowOptionbar(-1 ,item.id )}} className="material-symbols-outlined">close</span></div> */}
+                                      {item.tag != "input type='radio' " &&
+                                      item.tag != "input type='checkbox' " ? (
+                                        <div className="toGrid">
+                                          <div className="labeldiv">
+                                            {" "}
+                                            <label htmlFor="label">
+                                              label
+                                            </label>{" "}
+                                          </div>
+                                          <div className="inputdiv">
+                                            {" "}
+                                            {alledite.map((x) =>
+                                              item.tag == "p" ? (
+                                                item.id === x.id ? (
+                                                  <textarea
+                                                    value={x.label}
+                                                    onChange={(e) => {
+                                                      handleupdate(
+                                                        e,
+                                                        item.id,
+                                                        index
+                                                      );
+                                                    }}
+                                                    type="text"
+                                                  ></textarea>
+                                                ) : null
+                                              ) : item.id === x.id ? (
+                                                <input
+                                                  value={x.label}
+                                                  onChange={(e) => {
+                                                    handleupdate(
+                                                      e,
+                                                      item.id,
+                                                      index
+                                                    );
+                                                  }}
+                                                  type="text"
+                                                />
+                                              ) : null
+                                            )}
+                                          </div>
 
-                                {(item.tag.includes("input") && item.tag != "input type='radio' ") && (item.tag.includes("input") && item.tag != "input type='checkbox' ") || item.tag.includes('textarea')  ?  null:  <div  className="inputdiv">  { 
+                                          {(item.tag.includes("input") &&
+                                            item.tag != "input type='radio' " &&
+                                            item.tag.includes("input") &&
+                                            item.tag !=
+                                              "input type='checkbox' ") ||
+                                          item.tag.includes(
+                                            "textarea"
+                                          ) ? null : (
+                                            <div className="labeldiv">
+                                              {" "}
+                                              <label htmlFor="label">
+                                                Title
+                                              </label>{" "}
+                                            </div>
+                                          )}
 
-                                                 
-                                     alledite.map((x)=>( 
-                                             item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
-                                             : null
-                                           ))     
+                                          {(item.tag.includes("input") &&
+                                            item.tag != "input type='radio' " &&
+                                            item.tag.includes("input") &&
+                                            item.tag !=
+                                              "input type='checkbox' ") ||
+                                          item.tag.includes(
+                                            "textarea"
+                                          ) ? null : (
+                                            <div className="inputdiv">
+                                              {" "}
+                                              {alledite.map((x) =>
+                                                item.id === x.id ? (
+                                                  <input
+                                                    value={x.title}
+                                                    onChange={(e) => {
+                                                      handleupdatetitle(
+                                                        e,
+                                                        item.id,
+                                                        index
+                                                      );
+                                                    }}
+                                                    type="text"
+                                                  />
+                                                ) : null
+                                              )}
+                                              {item.thumbs == "header" ? (
+                                                <div className="optiondiv">
+                                                  <div
+                                                    style={{
+                                                      marginLeft: "-105px",
+                                                    }}
+                                                    className="labeldiv"
+                                                  >
+                                                    {" "}
+                                                    <label htmlFor="label">
+                                                      Type :
+                                                    </label>{" "}
+                                                  </div>
+                                                  <Select
+                                                    value={typehead}
+                                                    onChange={(e) => {
+                                                      handlechangehead(
+                                                        e,
+                                                        item.id
+                                                      );
+                                                    }}
+                                                    className="myselect"
+                                                    label="Type"
+                                                    labelId="demo-simple-select-label"
+                                                    id="demo-simple-select"
+                                                    sx={{
+                                                      border: "1px solid fff",
+                                                      color: "black",
+                                                      "& .MuiSvgIcon-root": {
+                                                        color: "black",
+                                                      },
+                                                    }}
+                                                  >
+                                                    <MenuItem disabled>
+                                                      type
+                                                    </MenuItem>
+                                                    <MenuItem
+                                                      key={"h1"}
+                                                      value={"h1"}
+                                                    >
+                                                      h1
+                                                    </MenuItem>
+                                                    <MenuItem
+                                                      key={"h2"}
+                                                      value={"h2"}
+                                                    >
+                                                      h2
+                                                    </MenuItem>
+                                                    <MenuItem
+                                                      key={"h3"}
+                                                      value={"h3"}
+                                                    >
+                                                      h3
+                                                    </MenuItem>
+                                                    <MenuItem
+                                                      key={"h4"}
+                                                      value={"h4"}
+                                                    >
+                                                      h4
+                                                    </MenuItem>
+                                                    <MenuItem
+                                                      key={"h5"}
+                                                      value={"h5"}
+                                                    >
+                                                      h5
+                                                    </MenuItem>
+                                                  </Select>
+                                                </div>
+                                              ) : null}
+                                            </div>
+                                          )}
+                                        </div>
+                                      ) : (
+                                        <>
+                                          <div className="titlediv">
+                                            {item.tag.includes("input") &&
+                                            item.tag != "input type='radio' " &&
+                                            item.tag !=
+                                              "input type='checkbox' " ? null : (
+                                              <div className="labeldiv">
+                                                {" "}
+                                                {
+                                                  <label htmlFor="label">
+                                                    Title
+                                                  </label>
+                                                }
+                                              </div>
+                                            )}
 
-                                           }
-                                 
-                                 {item.thumbs == "header" ? 
-                
+                                            {item.tag.includes("input") &&
+                                            item.tag != "input type='radio' " &&
+                                            item.tag !=
+                                              "input type='checkbox' " ? null : (
+                                              <div
+                                                style={{ width: "18%" }}
+                                                className="inputdiv"
+                                              >
+                                                {" "}
+                                                {alledite.map((x) =>
+                                                  item.id === x.id ? (
+                                                    <input
+                                                      value={x.title}
+                                                      onChange={(e) => {
+                                                        handleupdatetitle(
+                                                          e,
+                                                          item.id,
+                                                          index
+                                                        );
+                                                      }}
+                                                      type="text"
+                                                    />
+                                                  ) : null
+                                                )}
+                                              </div>
+                                            )}
+                                          </div>
 
-                                  <div className="optiondiv"> 
-                                             <div style={{marginLeft:'-105px'}} className="labeldiv"> <label htmlFor="label">Type :</label> </div> 
-                                  <Select value={typehead} onChange={(e)=>{handlechangehead(e , item.id)}} className="myselect" 
+                                          {options.map((opt, i) =>
+                                            opt.emplacementid == item.id ? (
+                                              <div className="toGrid">
+                                                <div className="labeldiv">
+                                                  {" "}
+                                                  <label htmlFor="label">
+                                                    label
+                                                  </label>{" "}
+                                                </div>
+                                                <div className="labeldiv">
+                                                  {" "}
+                                                  <span
+                                                    className="material-symbols-outlined"
+                                                    onClick={() => {
+                                                      HandledeleteOption(
+                                                        opt.id,
+                                                        opt.index
+                                                      );
+                                                    }}
+                                                    htmlFor="label"
+                                                  >
+                                                    close
+                                                  </span>{" "}
+                                                </div>
+                                                <div className="inputdiv">
+                                                  {" "}
+                                                  {alledite.map((x) =>
+                                                    item.id === x.id ? (
+                                                      <input
+                                                        value={opt.label}
+                                                        onChange={(e) => {
+                                                          handleupdate(
+                                                            e,
+                                                            item.id,
+                                                            index,
+                                                            opt.id
+                                                          );
+                                                        }}
+                                                        type="text"
+                                                      />
+                                                    ) : null
+                                                  )}
+                                                </div>
+                                              </div>
+                                            ) : null
+                                          )}
 
-                                   label="Type"
-                                   labelId="demo-simple-select-label"
-                                   id="demo-simple-select"
-                                  sx={{
-                                    border: "1px solid fff",
-                                    color: "black",
-                                    "& .MuiSvgIcon-root": {
-                                      color: "black",
-                                    },
-                                  }}
-                                  >
-                                    <MenuItem  disabled>type</MenuItem>
-                                    <MenuItem  key={"h1"} value={"h1"}>h1</MenuItem>
-                                    <MenuItem  key={"h2"} value={"h2"}>h2</MenuItem>
-                                    <MenuItem  key={"h3"} value={"h3"}>h3</MenuItem>
-                                    <MenuItem  key={"h4"} value={"h4"}>h4</MenuItem>
-                                    <MenuItem  key={"h5"} value={"h5"}>h5</MenuItem>
-                                  </Select></div> :
-                                  null
-                                  
-                                }
-                                
-                                  </div>}
-
-                                 
-
-                                
-
-
-                                  </div> :
-
-<>
-
-
-
-
-
-
-
-<div className="titlediv">
-                   {   ( item.tag.includes("input") && item.tag != "input type='radio' " &&  item.tag != "input type='checkbox' ")   ?  null  :
-                                  <div   className="labeldiv">  {     <label htmlFor="label">Title</label>  }</div> }
-
-                                {  ( item.tag.includes("input") && item.tag != "input type='radio' " &&  item.tag != "input type='checkbox' ")  ?  null  :
-                                
-                                  <div style={{width:"18%"}} className="inputdiv">  { 
-
-                                                 
-                                     alledite.map((x)=>( 
-                                      
-                                             item.id === x.id ? <input value={x.title} onChange={(e)=>{handleupdatetitle(e ,item.id , index )}}  type="text" />
-                                             : null
-                                           ))     
-
-                                           }
-                                 
-                                  </div>}
+                                          <div>
+                                            {" "}
+                                            <button
+                                              className="addoption"
+                                              onClick={() => {
+                                                addoption(item.id);
+                                              }}
+                                            >
+                                              Add Option{" "}
+                                              <span className="plus">+</span>{" "}
+                                            </button>
+                                          </div>
+                                        </>
+                                      )}
+                                      <div className="buttondiv">
+                                        {" "}
+                                        <button
+                                          style={{ height: "25px" }}
+                                          onClick={() => {
+                                            handleOnEdit(item.id, index);
+                                          }}
+                                        >
+                                          {" "}
+                                          Close{" "}
+                                        </button>{" "}
+                                      </div>
+                                    </div>
                                   </div>
-
-                        { 
-                      
-                          options.map((opt, i)=>(
-                            opt.emplacementid == item.id  ?
-                          <div className="toGrid">
-                                  <div  className="labeldiv"> <label htmlFor="label">label</label> </div> 
-                                  <div  className="labeldiv"> <span className="material-symbols-outlined"  onClick={()=>{HandledeleteOption(opt.id , opt.index)}} htmlFor="label">close</span> </div> 
-                                  <div  className="inputdiv"> {   
-                                         
-                                alledite.map((x)=>( 
-                                    item.id === x.id ? <input value={opt.label} onChange={(e)=>{handleupdate(e ,item.id , index ,opt.id )}}  type="text" />
-                                    
-                                    : null
-                                  )) 
-                                  }
-                                   </div> 
-                                   
-                   
-                                  </div>
-
-                               
-                              
-                   : null     ))
-                   
-                                }
-
-
-                                  <div> <button className="addoption" onClick={()=>{addoption(item.id)}}>Add Option <span className="plus">+</span> </button></div>
-
-                                  </>
-                                  
-                                }
-                                  <div className="buttondiv"> <button style={{height:"25px"}} onClick={() => {
-                                      handleOnEdit(item.id , index);
-                                    }}> Close  </button>  </div>
-                                  </div>
-
-                                </div> :  null  }
-                                </>
+                                ) : null}
+                              </>
                             ) : (
                               <span className="buttons">{item.title} </span>
                             )}
-                            
-                   
-                          
                           </div>
                         )}
                       </Draggable>
@@ -779,6 +952,9 @@ options.map((opt)=>(
             </Droppable>
           ))}
         </DragDropContext>
+      </div>
+      <div className="prevbutton">
+        <button>Preview</button>
       </div>
     </>
   );

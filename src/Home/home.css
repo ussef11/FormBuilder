@@ -1,284 +1,326 @@
-h1{
-    color: rgb(0, 0, 0);
+h1 {
+  color: rgb(0, 0, 0);
 }
 
-ul{
-    list-style: none;
+ul {
+  list-style: none;
 }
 
-
-
-.Content{
-    display: flex;
-    border: 1px solid violet;
-    margin: 39px;
-    background: #f2f2f2  url(https://formbuilder.online/assets/img/noise.png)
+.Content {
+  display: flex;
+  border: 1px solid violet;
+  margin: 39px;
+  background: #f2f2f2 url(https://formbuilder.online/assets/img/noise.png)
     repeat fixed;
 }
-
-.drager{
-    display: block;
-    width: 76%;
-    margin-left: 0;
-    
-}
-.myli{
-    margin-left: 8px;
-    /* margin-right: -22px; */
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    border: 1px solid sandybrown;
-    margin-top: 9px;
-    background-color: white;
-    height: 35px;
-    width: 119%;
-    padding: 2px;
-    text-align: center;
-    
-}
-
-.buttons{
-    position: relative;
-    top: 9px;
-}
-.Droperdiv{
+@media only screen and (max-width: 600px) {
+  .Content {
+    margin: 0;
     width: 100%;
-}
-.Droper{
-    border: 1px solid black;
-    
-    height: 100%;
-}
-.head3{
-    color: #a4a4a4;
+  }
 }
 
-.formsDrop-1{
-    width: 100%;
-    display: flex;
+.drager {
+  display: block;
+  width: 76%;
+  margin-left: 0;
 }
-.formsDrop-2{
-    margin-bottom: 10px;
-    width: 20%;
-    display: flex;
+.myli {
+  margin-left: 8px;
+  /* margin-right: -22px; */
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  border: 1px solid sandybrown;
+  margin-top: 9px;
+  background-color: white;
+  height: 35px;
+  width: 119%;
+  padding: 2px;
+  text-align: center;
+}
+
+.buttons {
+  position: relative;
+  top: 9px;
+}
+
+@media only screen and (max-width: 600px) {
+  .buttons {
+    font-size: 12px;
+  }
+}
+
+.Droperdiv {
+  width: 100%;
+}
+.Droper {
+  border: 1px solid black;
+
+  height: 100%;
+}
+.head3 {
+  color: #a4a4a4;
+}
+
+.formsDrop-1 {
+  width: 100%;
+  display: flex;
+}
+.formsDrop-2 {
+  margin-bottom: 10px;
+  width: 20%;
+  display: flex;
+  /* margin-left: 10px; */
+  border-left: 1px solid burlywood;
+}
+
+@media only screen and (max-width: 600px) {
+  .formsDrop-2 {
+    margin-right: 10px;
+    width: 28%;
     /* margin-left: 10px; */
-    border-left: 1px solid burlywood;
+  }
 }
 
-.elements{
-    border-radius: 5px;
-    display: block;
-        justify-content: center;
-    border: 1px solid sandybrown;
-    margin-top: 5px;
-    background-color: white;
-    width: 127%;
-    padding: 2px;
-    /* margin: 13px; */
-    margin-left: 6px;
-    margin-bottom: 9px;
+.elements {
+  border-radius: 5px;
+  display: block;
+  justify-content: center;
+  border: 1px solid sandybrown;
+  margin-top: 5px;
+  background-color: white;
+  width: 127%;
+  padding: 2px;
+  /* margin: 13px; */
+  margin-left: 6px;
+  margin-bottom: 9px;
 }
 
-.elemnt{
-    height: 10%;
-    width: 94%;
-    margin-left: 13px;
-    justify-content: end;
-    /* display: flex; */
-    text-align: initial;
-    /* margin-right: -16px; */
-    position: relative;
-    top: -15px;
-    margin-top: 27px;
-    margin-bottom: 5px;
-   
+.elemnt {
+  height: 10%;
+  width: 94%;
+  margin-left: 13px;
+  justify-content: end;
+  /* display: flex; */
+  text-align: initial;
+  /* margin-right: -16px; */
+  position: relative;
+  top: -15px;
+  margin-top: 27px;
+  margin-bottom: 5px;
 }
 
-.elemnt input{
-    width: 95%;
-    height: 26px;
-    border: 3px solid #989898;
-    border-radius: 4px;
+.elemnt input {
+  width: 95%;
+  height: 26px;
+  border: 3px solid #989898;
+  border-radius: 4px;
 }
-.elemnt .Checkbox{
-    width: 19px;
-}
-
-.elemnt  h1{
-    position: relative;
-    top: -8px;
+.elemnt .Checkbox {
+  width: 19px;
 }
 
-.optiondiv{
-    margin-top: 27px;
-    /* height: 0; */
-    margin-bottom: -31px;
+.elemnt h1 {
+  position: relative;
+  top: -8px;
 }
 
-.myselect{
-    width: 103%;
-    height: 39px;
-}
-.titleofelem .head3{
-        /* margin: 9px; */
-    /* justify-content: end; */
-    text-align: end;
-    display: flex;
-    /* display: contents; */
-    margin-left: 7px;
-    margin-top: -1px;
-}
-.titleofelem{
-    margin-left: 7px;
-    margin-top: 2px;
+.optiondiv {
+  margin-top: 27px;
+  /* height: 0; */
+  margin-bottom: -31px;
 }
 
-.material-symbols-outlined{
-    cursor: pointer;
+.myselect {
+  width: 103%;
+  height: 39px;
+}
+.titleofelem .head3 {
+  /* margin: 9px; */
+  /* justify-content: end; */
+  text-align: end;
+  display: flex;
+  /* display: contents; */
+  margin-left: 7px;
+  margin-top: -1px;
+}
+.titleofelem {
+  margin-left: 7px;
+  margin-top: 2px;
 }
 
- .optionbar{
- 
-    width: 0;
-    margin-left: auto;
-    margin-right: 49px;
-    position: relative;
-    position: relative;
-    display: flex;
-    top: -36px;
-    height: 0;
-} 
-
-
-
-
- .elemnt button{
-   
-    font-size: 1em;
-    padding: 8px;
-    /* background-color: #926a6a; */
-    /* color: #fff; */
-    border-radius: 4px;
-    /* border: none; */
-    cursor: pointer;
-  
- }
-
- .allContent{
-    width: 100%;
- }
-
- .editContent{
-
-    padding: 10px 5px;
-    background: #f7f7f7;
-    border-radius: 3px;
-    margin: 7px;
-    border: 1px solid #c5c5c5;
-    transition: background-color .5s ease-in-out;
+.material-symbols-outlined {
+  cursor: pointer;
 }
 
-.closeOptionbar{
-    width: 0;
-    margin-left: 97%;
-    margin-right: 0;
+.optionbar {
+  width: 0;
+  margin-left: auto;
+  margin-right: 49px;
+  position: relative;
+  position: relative;
+  display: flex;
+  top: -36px;
+  height: 0;
 }
 
-.inputdiv{
-    width: 100%;
-    margin-right: 5%;
+.elemnt button {
+  font-size: 1em;
+  padding: 8px;
+  /* background-color: #926a6a; */
+  /* color: #fff; */
+  border-radius: 4px;
+  /* border: none; */
+  cursor: pointer;
 }
 
-.inputdiv input{
-    width: 100%;
-    height: 26px;
-    border: 3px solid #989898;
-    border-radius: 4px;
+.allContent {
+  width: 100%;
 }
 
-.labeldiv{
-    margin-left: 30px;
-    margin-right: 75px;
-}
-.labeldiv label{
-    width: 16.66666667%;
-    padding-top: 7px;
-    margin-bottom: 0;
-    text-align: right;
-    font-weight: 700;
-    float: left;
-    white-space: nowrap;
-    /* overflow: hidden; */
-    text-overflow: ellipsis;
-    text-transform: capitalize;
-}
-.material-symbols-outlined{
-    color: red;
-    border-radius: 6px;
-}
-.material-symbols-outlined:hover{
-    background-color: red;
-    color: rgb(255, 255, 255);
+.editContent {
+  padding: 10px 5px;
+  background: #f7f7f7;
+  border-radius: 3px;
+  margin: 7px;
+  border: 1px solid #c5c5c5;
+  transition: background-color 0.5s ease-in-out;
 }
 
-.plus{
-    font-size: 16px;
+.closeOptionbar {
+  width: 0;
+  margin-left: 97%;
+  margin-right: 0;
 }
 
-.addoption{
-    border: 1px solid #c5c5c5;
-    height: 30px;
-    width: 113px;
-    background-color: white;
-    border: 0.2px sol;
-    border-radius: 5px;
-    font-family: monospace;
-    font-weight: 800;
+.inputdiv {
+  width: 100%;
+  margin-right: 5%;
 }
-.toGrid{
-    margin: 20px;
-    display: flex;
-    text-align: center;
-    justify-content: center;
+
+.inputdiv input {
+  width: 100%;
+  height: 26px;
+  border: 3px solid #989898;
+  border-radius: 4px;
 }
-.buttondiv{
-    position: relative;
-     top: 11px;
-   
+
+.labeldiv {
+  margin-left: 30px;
+  margin-right: 75px;
+}
+.labeldiv label {
+  width: 16.66666667%;
+  padding-top: 7px;
+  margin-bottom: 0;
+  text-align: right;
+  font-weight: 700;
+  float: left;
+  white-space: nowrap;
+  /* overflow: hidden; */
+  text-overflow: ellipsis;
+  text-transform: capitalize;
+}
+.material-symbols-outlined {
+  color: red;
+  border-radius: 6px;
+}
+.material-symbols-outlined:hover {
+  background-color: red;
+  color: rgb(255, 255, 255);
+}
+
+.plus {
+  font-size: 16px;
+}
+
+.addoption {
+  border: 1px solid #c5c5c5;
+  height: 30px;
+  width: 113px;
+  background-color: white;
+  border: 0.2px sol;
+  border-radius: 5px;
+  font-family: monospace;
+  font-weight: 800;
+}
+.toGrid {
+  margin: 20px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+.buttondiv {
+  position: relative;
+  top: 11px;
 }
 .buttondiv button {
-    border: 1px solid #c5c5c5;
-    background: white;
-    height: 25px;
-    /* border: none; */
-    border-bottom: 1px;
-    border-top-right-radius: 8px;
-    border-top-left-radius: 8px;
-   
+  border: 1px solid #c5c5c5;
+  background: white;
+  height: 25px;
+  /* border: none; */
+  border-bottom: 1px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
 }
 
 .labelL {
-    position: relative;
-    bottom: 8px;
-    font-weight: 700;
+  position: relative;
+  bottom: 8px;
+  font-weight: 700;
 }
 
-.titlediv{
-    display: flex;
-    margin-left: 3%;
+.titlediv {
+  display: flex;
+  margin-left: 3%;
 }
 
-.requireddiv{
-    display: flex;
-    margin-left: 6%;
+.requireddiv {
+  display: flex;
+  margin-left: 6%;
 }
 
-.reqtitlediv{
-    display: flex;
+.reqtitlediv {
+  display: flex;
 }
 
-.req{
-    margin-left:  5px;
-    color:  red;
+.req {
+  margin-left: 5px;
+  color: red;
+}
+
+.actionsvg {
+  position: relative;
+
+  width: 22px;
+  cursor: pointer;
+  color: #ff0000;
+  border-radius: 6px;
+}
+
+.material-symbols-outlined {
+  color: red;
+  border-radius: 6px;
+}
+.actionsvg:hover {
+  filter: invert(100%) sepia(3%) saturate(16%) hue-rotate(146deg)
+    brightness(104%) contrast(100%);
+}
+
+.material-symbols-outlined {
+  cursor: pointer;
+}
+
+.alldiv {
+  background-color: antiquewhite;
+}
+
+.myform {
+  width: 100%;
+}
+
+.prevbutton button {
+  margin-right: 3%;
+  text-align: right;
 }
