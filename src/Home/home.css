@@ -256,6 +256,14 @@ button {
 .material-symbols-outlined {
   color: red;
   border-radius: 6px;
+  font-family: cursive;
+  font-size: 17px;
+  font-weight: 900;
+  position: relative;
+  top: 8px;
+  height: 21px;
+  width: 22px;
+  left: 1px;
 }
 .material-symbols-outlined:hover {
   background-color: red;

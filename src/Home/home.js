@@ -920,7 +920,7 @@ const Home = () => {
                                                       }}
                                                       htmlFor="label"
                                                     >
-                                                      close
+                                                      X
                                                     </span>{" "}
                                                   </div>
                                                   <div className="inputdiv">
