@@ -6,12 +6,28 @@ ul {
   list-style: none;
 }
 
+button {
+  min-width: 16%;
+  height: 37px;
+  border: none;
+  background-color: #204fa1;
+  color: aliceblue;
+  font-family: sans-serif;
+  font-size: 20px;
+}
+
 .Content {
+  border-radius: 10px;
   display: flex;
   border: 1px solid violet;
   margin: 39px;
   background: #f2f2f2 url(https://formbuilder.online/assets/img/noise.png)
     repeat fixed;
+}
+@media only screen and (min-width: 600px) {
+  .Content {
+    padding: 26px;
+  }
 }
 @media only screen and (max-width: 600px) {
   .Content {
@@ -60,19 +76,23 @@ ul {
   height: 100%;
 }
 .head3 {
-  color: #a4a4a4;
+  color: #020202;
 }
 
 .formsDrop-1 {
   width: 100%;
   display: flex;
+  border-radius: 18px;
+  background-color: #eaebe7;
+  padding: 20px;
 }
 .formsDrop-2 {
-  margin-bottom: 10px;
-  width: 20%;
+  margin-bottom: 8px;
+  width: 16%;
   display: flex;
-  /* margin-left: 10px; */
+  margin-left: 2px;
   border-left: 1px solid burlywood;
+  margin-right: -21px;
 }
 
 @media only screen and (max-width: 600px) {
@@ -112,10 +132,19 @@ ul {
 }
 
 .elemnt input {
-  width: 95%;
-  height: 26px;
-  border: 3px solid #989898;
-  border-radius: 4px;
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  color: #202124;
+  border-top: none;
+  width: 33%;
+  height: 27px;
+  /* border: 3px solid #989898; */
+  /* border-radius: 4px; */
+  border-left: none;
+  border-right: none;
 }
 .elemnt .Checkbox {
   width: 19px;
@@ -137,13 +166,15 @@ ul {
   height: 39px;
 }
 .titleofelem .head3 {
-  /* margin: 9px; */
-  /* justify-content: end; */
+  color: black;
+  line-break: anywhere;
   text-align: end;
   display: flex;
-  /* display: contents; */
+
   margin-left: 7px;
   margin-top: -1px;
+  font-family: sans-serif;
+  font-weight: 100;
 }
 .titleofelem {
   margin-left: 7px;
@@ -239,11 +270,12 @@ ul {
   border: 1px solid #c5c5c5;
   height: 30px;
   width: 113px;
-  background-color: white;
+  background-color: #fab464;
   border: 0.2px sol;
   border-radius: 5px;
   font-family: monospace;
   font-weight: 800;
+  font-size: 15px;
 }
 .toGrid {
   margin: 20px;
@@ -257,12 +289,15 @@ ul {
 }
 .buttondiv button {
   border: 1px solid #c5c5c5;
-  background: white;
   height: 25px;
   /* border: none; */
   border-bottom: 1px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
+  font-size: 14px;
+  min-width: 20px;
+  height: 25px;
+  width: 8%;
 }
 
 .labelL {
@@ -277,6 +312,10 @@ ul {
 }
 
 .requireddiv {
+  display: flex;
+  margin-left: 6%;
+  margin-top: 2px;
+  margin-bottom: 22px;
   display: flex;
   margin-left: 6%;
 }
@@ -320,7 +359,181 @@ ul {
   width: 100%;
 }
 
+@media only screen and (max-width: 600px) {
+  .prevbutton {
+    margin-top: 4%;
+    padding-left: 0%;
+  }
+}
+@media only screen and (min-width: 600px) {
+  .prevbutton {
+    padding-left: 4%;
+  }
+}
+
+.prevbutton {
+  text-align: left;
+}
 .prevbutton button {
-  margin-right: 3%;
-  text-align: right;
+  cursor: pointer;
+  border-radius: 6px;
+  height: 35px;
+  border: none;
+  color: white;
+  background: #4a83ff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: monospace;
+}
+
+h1 {
+  line-break: anywhere;
+}
+p {
+  line-break: anywhere;
+}
+
+/* ----------------------- BLUR -------------------- */
+.blur-in {
+  -webkit-animation: blur 2s forwards;
+  -moz-animation: blur 2s forwards;
+  -o-animation: blur 2s forwards;
+  animation: blur 2s forwards;
+}
+
+@keyframes blur {
+  0% {
+    -webkit-filter: blur(0px);
+    -moz-filter: blur(0px);
+    -o-filter: blur(0px);
+    -ms-filter: blur(0px);
+    filter: blur(0px);
+  }
+
+  100% {
+    -webkit-filter: blur(4px);
+    -moz-filter: blur(4px);
+    -o-filter: blur(4px);
+    -ms-filter: blur(4px);
+    filter: blur(4px);
+  }
+}
+
+/* ----------------------- END BLUR -------------------- */
+
+.previewform {
+  width: 50%;
+  margin: 46px;
+  position: absolute;
+  top: 64px;
+  left: 13%;
+}
+@media only screen and (min-width: 600px) {
+  .previewform {
+    width: 50%;
+    margin: 46px;
+    position: absolute;
+    top: 64px;
+    left: 21%;
+  }
+}
+.Contentform {
+  background: #f0ebf8;
+  border-radius: 4px;
+  display: flex;
+  border: 1px solid violet;
+  padding-top: 37px;
+  border-radius: 19px;
+}
+@media only screen and (max-width: 600px) {
+  .Contentform {
+    margin: 0;
+    width: 100%;
+  }
+}
+
+.allbtnform {
+  display: flex;
+}
+
+.formbtn button {
+  margin-right: 31px;
+  cursor: pointer;
+  border-radius: 6px;
+  height: 35px;
+  border: none;
+  color: white;
+  background: #4a83ff;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: monospace;
+  margin-top: 10px;
+}
+
+.titleofelemform {
+  margin-left: 7px;
+  /* margin-top: 27px; */
+}
+
+.elemntform {
+  height: 10%;
+  width: 94%;
+  margin-left: 13px;
+  justify-content: end;
+  /* display: flex; */
+  text-align: initial;
+  /* margin-right: -16px; */
+  position: relative;
+  top: -15px;
+  margin-top: 17px;
+  margin-bottom: 5px;
+}
+
+.reqtitledivform {
+  display: flex;
+}
+
+.reqform {
+  position: relative;
+  bottom: -16px;
+  margin-left: 5px;
+  color: red;
+}
+
+.elemntform input {
+  background-color: transparent;
+
+  font-family: Roboto, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  line-height: 20px;
+  color: #202124;
+  border-top: none;
+  width: 33%;
+  height: 27px;
+  /* border: 3px solid #989898; */
+  /* border-radius: 4px; */
+  border-left: none;
+  border-right: none;
+}
+
+.dragerform {
+  display: block;
+
+  margin-left: 0;
+}
+
+.divcontentform {
+  padding: 2px;
+  margin: 10px;
+  /* width: 100%; */
+  background-color: white;
+  display: block;
+  border-radius: 13px;
+  background-color: white;
+}
+
+.alldivform {
+  border-radius: 19px;
 }

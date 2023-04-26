@@ -9,111 +9,18 @@ import "./Home/home.css";
 const Testform = () => {
   const [labelheader, setlabelheader] = useState("Header");
   const [typehead, settypehead] = useState("");
-  const [display, setdisplay] = useState();
+  const [items, setitems] = useState();
   const [options, setoptions] = useState();
   useEffect(() => {
-    let myoptions = [
-      {
-        emplacementid: "92d53091-7881-8079-91a1-e4a8388ef7f411",
-        index: 1,
-        id: 1,
-        label: "men",
-      },
-      {
-        emplacementid: "92d53091-7881-8079-91a1-e4a8388ef7f411",
-        index: 2,
-        id: 2,
-        label: "women",
-      },
-      {
-        emplacementid: "92d53091-7881-8079-91a1-e4a8388ef7f411",
-        index: 3,
-        id: 3,
-        label: "Other",
-      },
-      {
-        emplacementid: "92d53091-7881-8079-91a1-e4a8388ef7f4111",
-        index: 4,
-        id: 4,
-        label: "bac",
-      },
-      {
-        emplacementid: "92d53091-7881-8079-91a1-e4a8388ef7f4111",
-        index: 5,
-        id: 5,
-        label: "licence",
-      },
-    ];
-    setoptions(myoptions);
-    setdisplay([
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f41",
-        title: "",
-        thumbs: "header",
-        tag: "h1",
-        label: "Welcome To My form",
-        required: false,
-      },
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f411",
-        title: "gender",
-        thumbs: "header.png",
-        tag: "input type='radio' ",
-        label: "",
-        class: "labelL",
-        required: false,
-      },
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f4111",
-        title: "degrees",
-        thumbs: "Checkbox.png",
-        tag: "input type='checkbox' ",
-        label: "",
-        class: "labelL",
-        required: false,
-      },
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f41111",
-        title: "Number",
-        thumbs: "header.png",
-        tag: "input type='Number' ",
-        label: "Years of experience ",
-        class: "labelL",
-        required: true,
-      },
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f411111",
-        title: "textarea",
-        thumbs: "header.png",
-        tag: "textarea",
-        label: "lettre de motivation",
-        class: "labelL",
-        required: false,
-      },
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f4111111",
-        title: "File Upload",
-        thumbs: "file.png",
-        tag: "input type='file' ",
-        label: "Telecharger C.V",
-        required: false,
-      },
-      {
-        id: "92d53091-7881-8079-91a1-e4a8388ef7f41111111",
-        title: "",
-        thumbs: "button.png",
-        tag: "button",
-        label: "Submit",
-        required: false,
-      },
-    ]);
+    setoptions(JSON.parse(localStorage.getItem("option")));
+    setitems(JSON.parse(localStorage.getItem("items")));
   }, [1]);
 
   const handlesubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.target);
 
-    for (let key of display.entries()) {
+    for (let key of items.entries()) {
       let title;
       if (
         key[1]["tag"].includes("input type='checkbox' ") ||
@@ -133,17 +40,21 @@ const Testform = () => {
     }
   };
 
+  useEffect(() => {
+    console.log(localStorage.getItem("items"));
+  });
+
   return (
-    <div className="alldiv">
-      <div style={{ background: "white" }} className="Content">
+    <div className="alldivform">
+      <div className="Contentform">
         <form className="myform" onSubmit={handlesubmit}>
-          <div className="drager">
-            {display &&
-              display.map((item, index) => (
-                <div>
-                  <div className="reqtitlediv">
+          <div className="dragerform">
+            {items &&
+              items.map((item, index) => (
+                <div className="divcontentform">
+                  <div className="reqtitledivform">
                     {" "}
-                    <div className="titleofelem">
+                    <div className="titleofelemform">
                       {" "}
                       <h3 className="head3">
                         {(item.tag.includes("input") &&
@@ -155,9 +66,9 @@ const Testform = () => {
                           : item.title}{" "}
                       </h3>
                     </div>
-                    <div>
+                    <div className="reqform">
                       {" "}
-                      {item.required && <span className="req">*</span>}{" "}
+                      {item.required && <span>*</span>}{" "}
                     </div>
                   </div>
 
@@ -165,7 +76,7 @@ const Testform = () => {
                     {item.tag != "input type='radio' " &&
                     item.tag != "input type='checkbox' " ? (
                       <div
-                        className="elemnt"
+                        className="elemntform"
                         dangerouslySetInnerHTML={{
                           __html: `<${item.tag} 
                           name=${item.id}
